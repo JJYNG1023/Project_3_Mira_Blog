@@ -30,4 +30,4 @@ Mira aims to make blog discovery simple through:
 ---
 
 ### WireFrame View
-[Link_for_Wireframe_view](https://miro.com/welcomeonboard/LzFSMFZra0czUHZpQlM1bWo5OGpDTGVMV0k0Z2h6MkJSNmVCNGZaMzdnM1VUenU1aGo3Zis4OWZTLzhab2lURXZpbG5ic0UxV0Npd1p1d21rM0F1SXBmMkEyd1ZQSThYdVgzWjFaQnRTN3dYRkRUOW8vMjJLU0RwWFo5L3p5a3JnbHpza3F6REdEcmNpNEFOMmJXWXBBPT0hdjE=?share_link_id=635103810114)
+[Link_for_Wireframe_view](https://miro.com/app/board/uXjVHRk-oeo=/?share_link_id=370277439113)
