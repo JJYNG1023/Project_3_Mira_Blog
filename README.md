@@ -31,3 +31,8 @@ Mira aims to make blog discovery simple through:
 
 ### WireFrame View
 [Link_for_Wireframe_view](https://miro.com/app/board/uXjVHRk-oeo=/?share_link_id=370277439113)
+
+### ERD
+[Link_for_ERD](https://miro.com/app/board/uXjVHRHtjY0=/?share_link_id=138730307903)
+
+
