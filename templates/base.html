@@ -18,15 +18,47 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    
+    <!-- Bootstrap icon-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/style.css' %}">
 </head>
 <body>
 
-    <header>
-        <h1>Mira Blog</h1>
-    </header>
+   <header>
+     <nav class="navbar bg-light shadow-sm fixed-top">
+        <div class="container-fluid mira-navbar">
+
+        <!-- Navbar content -->
+            <div class="mira-nav-links">
+                <button type="button" class="btn btn-outline-primary mira-menu-btn" aria-label="Open menu"><i class="bi bi-list"></i>
+                </button>
+  
+                <a class="nav-link mira-nav-link mira-active" href="{% url 'home' %}" aria-current="page">
+                        Explore
+                </a>
+
+                <a class="nav-link mira-nav-link" href="#">
+                        Recent
+                </a>
+            </div>
+            
+                <!-- Search form -->
+            <form class="mira-search-form" role="search" method="GET" action="#">
+                <input 
+                    class="form-control form-control-sm mira-search-input" 
+                    type="search" 
+                    name="q"
+                    placeholder="Search" 
+                    aria-label="Search">
+            </form>
+
+            </div>
+        </div>
+    </nav>
+</header>
 
     <main>
         {% block content %}
