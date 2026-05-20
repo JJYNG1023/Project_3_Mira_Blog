@@ -31,7 +31,7 @@ SECRET_KEY = "django-insecure-4#4j)*g_j@ryx8u2=9ri-(4)0d8i850+s!zd74vdvh3fjfxq9v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['.herokuapp.com', 'localhost', '127.0.0.1',  "localhost", 'mira-blog-c09c40ce2113.herokuapp.com']
 
 
 # Application definition
@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # Local apps
-
+    "blog",
 ]
 
 MIDDLEWARE = [
