@@ -31,11 +31,37 @@ Visitors want to:
 
 The website should presents the content discovery simple, visual, and accessible.
 
----
 
-1.03 Strategy Plane_Client Goals
-What does mira want the website to achieve?
-1.04 Strategy Plane_Developer and Business Goals
+### 1.03 Strategy Plane_Client Goals
+#### What does mira want the website to achieve?
+The main purpose of Mira is to create an inclusive hybrid social/blog platform.
+The platform is not limited to any specific user or purpose, but a space for everyone to share and blog their own experiences. These experiences are filtered through tags, where individuals have similar mindset can like, follow and create an interaction.
+
+The website should:
+- Provide an open platform for users to share different contents.
+- Allow blog posts to be personal, biase or lifestyle focused - i.e places for the best guinness experience in Dublin, places to hike in lake district etc..
+- All posted blogs should be tagged, this encourage user to explore content through search and tag labels.
+- Allow users to interact with the blog post via comment, like and follow.
+- User should be able to create their own account to create blog posts.
+- The website should allow the user to manage their own blog posts.
+- The website should have a dynamic view across different small, mid and large screens.
+- User should also able to share liked posts to other people.
+
+
+### 1.04 Strategy Plane_Developer and Business Goals
+The strategy plane of a develpers aim is to create a full stack Django web application.
+
+##### Developers aim:
+- Build a Django project using a clear code and app structure.
+- Use relational database to store,post,users,tags,comments,likes and save posts.
+- Allow user to create,read,update & delete posts.
+- Using tags to support the filter and search application.
+- Web should be presentable across different screen size.
+
+##### Business goals:
+
+
+
 1.05 Scope Plane_User Stories
 1.06 Skeleton Plane_Design Choices
 1.07 Styling
