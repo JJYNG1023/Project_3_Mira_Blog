@@ -5,7 +5,7 @@
 
 <!-- filter tags -->
 <section class="topic-filter container-fluid mb-4">
-    <div class="topic-scroll">
+    <div class="topic-filter-wrapper">
         <button class="topic-btn" data-topic="all">All</button>
         <button class="topic-btn" data-topic="travel">Travel</button>
         <button class="topic-btn" data-topic="food">Food</button>
@@ -104,9 +104,19 @@
             </a>
         </div> 
      </div>
-<section>
-
 </section>
 
+<section>
+    <nav class="bottom-mobile-nav" aria-label="Mobile bottom navigation">
+        <a href="{% url 'home' %}" class="bottom-nav-item active" aria-label="Home">
+        <i class="bi bi-house"></i></a>
+    <a href="#" class="bottom-nav-item" aria-label="Notifications">
+        <i class="bi bi-bell"></i></a>
+    <a href="#" class="bottom-nav-item" aria-label="Profile">
+        <i class="bi bi-person"></i></a>
+    <a href="#" class="bottom-nav-item create-post-link" aria-label="Create post">
+        <i class="bi bi-plus-square"></i> </a>
+    </nav>
+</section>
 
 {% endblock %}
