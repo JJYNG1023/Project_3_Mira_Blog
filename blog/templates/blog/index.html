@@ -3,6 +3,110 @@
 
 {% block content %}
 
-<h1>Mira Blog is working</h1>
+<!-- filter tags -->
+<section class="topic-filter container-fluid mb-4">
+    <div class="topic-scroll">
+        <button class="topic-btn" data-topic="all">All</button>
+        <button class="topic-btn" data-topic="travel">Travel</button>
+        <button class="topic-btn" data-topic="food">Food</button>
+        <button class="topic-btn" data-topic="hike">Hike</button>
+        <button class="topic-btn" data-topic="city-explore">City Explore</button>
+    </div>
+</section>
+
+<!-- post feed -->
+<section class="container ">
+     <div class="row">
+
+        <div class="col-6 col-md-4">
+           <a href="#" class="mira-post-card" data-topic="travel">
+            <!-- to be replaced with post image in the future -->
+            <!-- to be replaced with {% static 'blog/images/your-image-name.jpg' %} -->
+                <img 
+                src="https://picsum.photos/180/300?random=1"
+                class="mira-post-img"
+                alt="Post image">
+    
+            <div>
+                <!-- to be replaced with post title in the future -->
+                <h2 class="card-title">Card title</h2>
+                <!-- to be replaced with post content in the future -->
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+            </div>
+            </a>
+        </div>
+
+        <div class="col-6 col-md-4">
+            <a href="#" class="mira-post-card" data-topic="travel">
+                <!-- to be replaced with post image in the future -->
+                <img 
+                src="https://picsum.photos/180/200?random=2"
+                class="mira-post-img"
+                alt="Post image">
+    
+                <div>
+                    <!-- to be replaced with post title in the future -->
+                    <h2 class="card-title">Card title</h2>
+                    <!-- to be replaced with post content in the future -->
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-6 col-md-4">
+            <a href="#" class="mira-post-card" data-topic="hike">
+                <!-- to be replaced with post image in the future -->
+                <img 
+                src="https://picsum.photos/180/300?random=3"
+                class="mira-post-img"
+                alt="Post image">
+    
+                <div>
+                    <!-- to be replaced with post title in the future -->
+                    <h2 class="card-title">Card title</h2>
+                    <!-- to be replaced with post content in the future -->
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-6 col-md-4">
+            <a href="#" class="mira-post-card" data-topic="travel">
+                <!-- to be replaced with post image in the future -->
+                <img 
+                src="https://picsum.photos/180/400?random=4"
+                class="mira-post-img"
+                alt="Post image">
+    
+                <div>
+                    <!-- to be replaced with post title in the future -->
+                    <h2 class="card-title">Card title</h2>
+                    <!-- to be replaced with post content in the future -->
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-6 col-md-4">
+            <a href="#" class="mira-post-card" data-topic="food">
+                <!-- to be replaced with post image in the future -->
+                <img 
+                src="https://picsum.photos/180/200?random=5"
+                class="mira-post-img"
+                alt="Post image">
+    
+            <div>
+                <!-- to be replaced with post title in the future -->
+                <h2 class="card-title">Card title</h2>
+                <!-- to be replaced with post content in the future -->
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+            </div>
+            </a>
+        </div> 
+     </div>
+<section>
+
+</section>
+
 
 {% endblock %}
