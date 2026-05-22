@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block navbar %}
+<!-- individual post detail navbar to replace the base navbar-->
+<header>
+    <nav class="navbar bg-light shadow-sm fixed-top">
+        <div class="container-fluid mira-navbar">
+
+            <div class="mira-nav-links">
+                <a href="{% url 'home' %}" class="btn btn-outline-primary mira-menu-btn" aria-label="Back to home">
+                    <i class="bi bi-arrow-left"></i>
+                </a>
+
+            <!-- to be replaced with post author username in the future -->
+            <div class="post-author-id">
+                <div class="post-author-placeholder">
+                    <i class="bi bi-person"></i>
+                 <!-- post author place holder and links to be replaced in the future -->
+                </div>
+
+                <span class="mira-nav-link mira-active">
+                    {{ post.author.username }}
+                <!-- post author username -->
+                </span>
+            </div>
+
+            <button type="button" class="btn btn-outline-dark btn-sm post-follow-btn">
+                Follow
+            </button>
+
+            <a href="#" class="post-share-btn" aria-label="Share post">
+                <i class="bi bi-share"></i>
+            </a>
+
+        </div>
+    </nav>
+</header>
+{% endblock %}
+
+{% block content %}
+
+<section class="container post-detail-section">
+
+<div id="postImageCarousel" class="carousel slide post-detail-image-wrapper">
+
+    <div class="carousel-indicators post-carousel-indicators">
+        <button 
+            type="button" 
+            data-bs-target="#postImageCarousel" 
+            data-bs-slide-to="0" 
+            class="active" 
+            aria-current="true" 
+            aria-label="Slide 1">
+        </button>
+    </div>
+
+    <div class="carousel-inner">
+
+        <div class="carousel-item active">
+            {% if post.featured_image %}
+                <img 
+                    src="{{ post.featured_image.url }}" 
+                    class="d-block w-100 mira-post-image post-detail-image" 
+                    alt="{{ post.title }}">
+            {% else %}
+                <div class="mira-post-image post-detail-image">
+                    <span>Post image</span>
+                </div>
+            {% endif %}
+        </div>
+
+    </div>
+
+    <button 
+        class="carousel-control-prev" 
+        type="button" 
+        data-bs-target="#postImageCarousel" 
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+
+    <button 
+        class="carousel-control-next" 
+        type="button" 
+        data-bs-target="#postImageCarousel" 
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+
+</div>
+
+    <p class="post-detail-date">
+        {{ post.created_at|date:"d M Y" }}
+    </p>
+
+    <h1 class="mira-post-title post-detail-title">
+        {{ post.title }}
+    </h1>
+
+    <div class="mira-post-preview post-detail-content">
+        {{ post.content|linebreaks }}
+    </div>
+
+    <div>
+        {% for tag in post.tags.all %}
+       <button class="topic-btn" data-topic="{{ tag.name}}" type="button">
+        {{ tag.name }}
+        </button>
+        {% endfor %}
+    </div>
+
+</section>
+
+<nav class="post-bottom-action-bar" aria-label="Post actions">
+    <form class="post-comment-form" action="#" method="post">
+        {% csrf_token %}
+        <input 
+            type="text" 
+            name="comment" 
+            class="post-comment-input" 
+            placeholder="Type comment">
+    </form>
+
+    <a href="#" class="bottom-nav-item" aria-label="Bookmark post">
+        <i class="bi bi-bookmark"></i>
+    </a>
+
+    <a href="#" class="bottom-nav-item" aria-label="Like post">
+        <i class="bi bi-heart"></i>
+    </a>
+</nav>
+
+{% endblock %}

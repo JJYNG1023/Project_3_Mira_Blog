@@ -26,7 +26,7 @@
 
         {% for post in posts %}
         <div class="col-6 col-md-4">
-           <a href="#" 
+           <a href=" {% url 'post_detail' post.slug %}" 
                 class="mira-post-card" 
                 data-topic="{% for tag in post.tags.all %}{{ tag.name|slugify }} {% endfor %}">
 
