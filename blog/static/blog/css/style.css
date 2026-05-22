@@ -100,25 +100,21 @@ body {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
+}
+
+/* Only affects real uploaded images */
+img.mira-post-image {
+    display: block;
     object-fit: cover;
+}
+
+/* Only affects placeholder div */
+div.mira-post-image {
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-}
-
-/* example image place holder*/
-.image-medium {
-    height: 170px;
-}
-
-.image-large {
-    height: 220px;
-}
-
-.image-tall {
-    height: 260px;
 }
 
 .mira-post-title {

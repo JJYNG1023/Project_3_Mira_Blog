@@ -6,9 +6,16 @@
 <!-- filter tags -->
 <section class="topic-filter container-fluid mb-4">
     <div class="topic-filter-wrapper">
-        <button class="topic-btn" data-topic="all">All</button>
+        <button class="topic-btn active" 
+        data-topic="all" 
+        type="button">All
+        </button>
     {% for tag in tags %}
-        <button class="topic-btn" data-topic="{{tag.name|slugify}}">{{ tag.name }}</button>
+       <button class="topic-btn" 
+       data-topic="{{ tag.name|slugify }}" 
+       type="button">
+        {{ tag.name }}
+        </button>
     {% endfor %}
     </div>
 </section>
@@ -20,18 +27,18 @@
         {% for post in posts %}
         <div class="col-6 col-md-4">
            <a href="#" 
-           class="mira-post-card" 
-           data-topic="{% for tag in post.tags.all %}{{ tag.name|slugify }} {% endfor %}">
+                class="mira-post-card" 
+                data-topic="{% for tag in post.tags.all %}{{ tag.name|slugify }} {% endfor %}">
 
             <!-- to be replaced with post image in the future -->
             <!-- to be replaced with {% static 'blog/images/your-image-name.jpg' %} -->
             {% if post.featured_image %}
             <img 
                 src="{{ post.featured_image.url }}"
-                class="mira-post-img"
+                class="mira-post-image"
                 alt=" {{ post.title }}">
             {% else %}
-            <div class="mira-post-image image-medium">
+            <div class="mira-post-image">
                 <span>post image</span>
             </div>
             {% endif %}
