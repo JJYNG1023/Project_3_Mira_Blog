@@ -1,5 +1,74 @@
+:root {
+    /* Colours */
+    --primary-color: #ffeb33;
+    --secondary-color: #212529;
+
+    --icon-color-default: #fd7b41;
+    --icon-color-interactive: #fd7b41;
+
+    --main-title-color: #000000;
+    --sub-title-color: #000000;
+    --heading-1-color: #070707;
+    --heading-2-color: #090909;
+    --heading-3-color: #080808;
+    --paragraph-color: #000000;
+    --annotation-color: #939393;
+
+    --background-color: #ffffff;
+    --link-color: #0d6efd;
+    --link-hover-color: #0a58ca;
+
+    /* Font sizes */
+    --font-size-xs: 0.7rem;
+    --font-size-sm: 0.8rem;
+    --font-size-base: 0.9rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.1rem;
+    --font-size-xl: 1.35rem;
+    --font-size-xxl: 1.6rem;
+
+    /* Font weights */
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 600;
+
+    /* Border radius */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-pill: 999px;
+}
+
 body {
     padding-top: 80px;
+}
+
+h1 {
+    font-size: var(--font-size-xxl);
+    font-weight: var(--font-weight-bold);
+    color: var(--heading-1-color);
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--heading-2-color);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+h3 {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-medium);
+    color: var(--heading-3-color);
+    line-height: 1.3;
+}
+
+p {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-regular);
+    color: var(--paragraph-color);
+    line-height: 1.4;
 }
 
 /* -----------------------------
@@ -21,7 +90,7 @@ body {
 }
 
 .mira-active {
-    font-weight: 500;
+    font-weight: var(--font-weight-medium);
     font-size: larger;
 }
 
@@ -30,13 +99,17 @@ body {
     height: 44px;
     border: none;
     background: transparent;
-    color: #0d6efd;
+    color: var(--link-color);
     padding: 0;
-    font-size: 1.35rem;
+    font-size: var(--font-size-xl);
     line-height: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.mira-menu-btn:hover {
+    color: var(--link-hover-color);
 }
 
 .mira-nav-link {
@@ -73,15 +146,15 @@ body {
 }
 
 .topic-btn {
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     padding: 0.15rem 0.75rem;
-    font-size: 0.8rem;
+    font-size: var(--font-size-sm);
     line-height: 1.2;
 }
 
 .topic-btn.active {
-    background-color: #212529;
-    color: #ffffff;
+    background-color: var(--secondary-color);
+    color: var(--background-color);
 }
 
 
@@ -97,18 +170,18 @@ body {
     display: block;
     width: 100%;
     text-decoration: none;
-    color: #212529;
+    color: var(--secondary-color);
 }
 
 .mira-post-card:hover {
-    color: #212529;
+    color: var(--secondary-color);
 }
 
 .mira-post-image {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 0.5rem;
+    border-radius: var(--radius-md);
 }
 
 img.mira-post-image {
@@ -163,32 +236,32 @@ div.mira-post-image {
 .post-author-placeholder {
     width: 30px;
     height: 30px;
-    border: 1px solid #212529;
-    border-radius: 50%;
+    border: 1px solid var(--secondary-color);
+    border-radius: var(--radius-pill);
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #ffffff;
-    font-size: 0.9rem;
+    background-color: var(--background-color);
+    font-size: var(--font-size-base);
 }
 
 .post-follow-btn {
     font-size: 0.75rem;
     padding: 0.25rem 0.55rem;
     white-space: nowrap;
-    border-radius: 3rem;
+    border-radius: var(--radius-pill);
 }
 
 .post-share-btn {
-    color: #212529;
-    font-size: 1.35rem;
+    color: var(--secondary-color);
+    font-size: var(--font-size-xl);
     text-decoration: none;
     display: flex;
     align-items: center;
 }
 
 .post-share-btn:hover {
-    color: #0d6efd;
+    color: var(--link-color);
 }
 
 .post-detail-image {
@@ -200,6 +273,14 @@ div.mira-post-image {
     width: 8px;
     height: 8px;
     border-radius: 50%;
+    border: 0;
+    margin: 0 4px;
+    background-color: var(--background-color);
+    opacity: 0.35;
+}
+
+.carousel-indicators .active {
+    opacity: 1;
 }
 
 .carousel-control-prev,
@@ -208,20 +289,62 @@ div.mira-post-image {
 }
 
 .post-detail-title {
-    font-size: 1.75rem;
+    font-size: var(--font-size-detail-title);
     margin: 0.75rem 0 0.5rem;
-    font-weight: 600;
-    line-height: 1.2;
-    margin-bottom: 0.75rem;
 }
 
 .post-detail-date {
+    display: block;
+    width: 100%;
     text-align: right;
     padding-right: 0.5rem;
-    color: #898989;
+    color: var(--annotation-color);
     margin-top: 0.25rem;
-    font-size: 0.8rem;
+    font-size: var(--font-size-sm);
 }
+
+/* -----------------------------
+   Post detail comments
+------------------------------ */
+
+.post-comments-section {
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
+}
+
+.comment-item {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.comment-content {
+    flex: 1;
+}
+
+.comment-header,
+.comment-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comment-like {
+    font-size: 1.2rem;
+}
+
+.comment-meta {
+    font-size: var(--font-size-xs);
+    color: var(--annotation-color);
+}
+
+.comment-meta a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
 
 /* Post detail bottom action bar */
 
@@ -231,8 +354,8 @@ div.mira-post-image {
     left: 0;
     right: 0;
     height: 58px;
-    background-color: #ffffff;
-    border-top: 1px solid #222;
+    background-color: var(--background-color);
+    border-top: 1px solid var(--secondary-color);
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -246,24 +369,11 @@ div.mira-post-image {
 
 .post-comment-input {
     width: 100%;
-    border: 1px solid #212529;
-    border-radius: 999px;
+    border: 1px solid var(--secondary-color);
+    border-radius: var(--radius-pill);
     padding: 0.35rem 0.9rem;
-    font-size: 0.9rem;
+    font-size: var(--font-size-base);
 }
-
-
-/* -----------------------------
-   Shared scroll arrow
------------------------------- */
-
-.scroll-down-arrow {
-    text-align: center;
-    font-size: 2rem;
-    line-height: 1;
-    margin-bottom: 4.5rem;
-}
-
 
 /* -----------------------------
    Bottom mobile navigation
@@ -275,8 +385,8 @@ div.mira-post-image {
     left: 0;
     right: 0;
     height: 58px;
-    background-color: #ffffff;
-    border-top: 1px solid #222;
+    background-color: var(--background-color);
+    border-top: 1px solid var(--secondary-color);
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -284,18 +394,18 @@ div.mira-post-image {
 }
 
 .bottom-nav-item {
-    color: #212529;
+    color: var(--secondary-color);
     font-size: 1.55rem;
     text-decoration: none;
 }
 
 .bottom-nav-item:hover {
-    color: #0d6efd;
+    color: var(--link-color);
 }
 
 .bottom-create-btn {
-    border: 1px solid #222;
-    border-radius: 0.25rem;
+    border: 1px solid var(--secondary-color);
+    border-radius: var(--radius-sm);
     padding: 0.05rem 1.3rem;
 }
 
@@ -313,7 +423,7 @@ div.mira-post-image {
     }
 
     .topic-btn {
-        font-size: 0.9rem;
+        font-size: var(--font-size-base);
     }
 
     .mira-navbar {
@@ -337,10 +447,8 @@ div.mira-post-image {
         max-width: 720px;
         left: 50%;
         transform: translateX(-50%);
-        border-left: 1px solid #222;
-        border-right: 1px solid #222;
-        padding-bottom: 5rem;
-
+        border-left: 1px solid var(--secondary-color);
+        border-right: 1px solid var(--secondary-color);
     }
 }
 

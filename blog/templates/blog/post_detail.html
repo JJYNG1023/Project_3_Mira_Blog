@@ -45,7 +45,7 @@
 
 <div id="postImageCarousel" class="carousel slide post-detail-image-wrapper">
 
-    <div class="carousel-indicators post-carousel-indicators">
+    <div class="carousel-indicators">
         <button 
             type="button" 
             data-bs-target="#postImageCarousel" 
@@ -113,6 +113,38 @@
         {% endfor %}
     </div>
 
+</section>
+
+<!-- Comments section -->
+<section class="post-comments-section">
+
+    <h2>Comments:</h2>
+
+    <div class="comment-item">
+
+        <div class="post-author-placeholder">
+            <i class="bi bi-person"></i>
+        </div>
+
+        <div class="comment-content">
+            <div class="comment-header">
+                <span class="mira-nav-link mira-active">User Name/ID</span>
+
+                  <a href="#" class="comment-like" aria-label="Like comment">
+                    <i class="bi bi-heart"></i>
+                </a>
+            </div>
+
+            <p class="mira-post-preview">
+                User comment user comment user comment user comment.
+            </p>
+
+            <div class="comment-meta">
+                <span>Time & Date</span>
+                <a href="#">Reply</a>
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- Post detail bottom action bar -->
