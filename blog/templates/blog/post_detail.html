@@ -120,6 +120,7 @@
 
     <h2>Comments:</h2>
 
+   <!-- for comment in comments -->
     <div class="comment-item">
 
         <div class="post-author-placeholder">
@@ -128,23 +129,29 @@
 
         <div class="comment-content">
             <div class="comment-header">
-                <span class="mira-nav-link mira-active">User Name/ID</span>
+                <span class="mira-nav-link mira-active">
+                     <!--comment.author.username-->
+                </span>
 
-                  <a href="#" class="comment-like" aria-label="Like comment">
+                <a href="#" class="comment-like" aria-label="Like comment">
                     <i class="bi bi-heart"></i>
                 </a>
             </div>
 
             <p class="mira-post-preview">
-                User comment user comment user comment user comment.
+                 <!--comment.content-->
             </p>
 
             <div class="comment-meta">
-                <span>Time & Date</span>
+                <span><!--comment.created_at|date:"d M Y"--></span>
                 <a href="#">Reply</a>
             </div>
         </div>
     </div>
+     <!-- empty -->
+        <p class="mira-post-preview">No comments yet.</p>
+     <!-- endfor -->
+
 </section>
 
 <!-- Post detail bottom action bar -->
