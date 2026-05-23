@@ -2,7 +2,10 @@ body {
     padding-top: 80px;
 }
 
-/* Whole navbar row */
+/* -----------------------------
+   Shared navbar
+------------------------------ */
+
 .mira-navbar {
     display: flex;
     align-items: center;
@@ -10,7 +13,6 @@ body {
     flex-wrap: nowrap;
 }
 
-/* Menu button + Explore + Recent */
 .mira-nav-links {
     display: flex;
     align-items: center;
@@ -23,20 +25,26 @@ body {
     font-size: larger;
 }
 
-/* Menu button */
 .mira-menu-btn {
-    padding: 0.35rem 0.6rem;
+    width: 44px;
+    height: 44px;
+    border: none;
+    background: transparent;
+    color: #0d6efd;
+    padding: 0;
+    font-size: 1.35rem;
     line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Explore and Recent */
 .mira-nav-link {
     font-size: 0.95rem;
     white-space: nowrap;
     padding: 0;
 }
 
-/* Search bar */
 .mira-search-form {
     flex: 1;
     min-width: 0;
@@ -47,7 +55,10 @@ body {
     border-radius: 15px;
 }
 
-/* landing page */
+
+/* -----------------------------
+   Landing page: topic filters
+------------------------------ */
 
 .topic-filter-section {
     padding: 0.75rem 1rem 0.5rem;
@@ -59,10 +70,6 @@ body {
     align-items: center;
     gap: 0.35rem;
     width: 100%;
-}
-
-.topic-filter-wrapper::-webkit-scrollbar {
-    display: none;
 }
 
 .topic-btn {
@@ -78,12 +85,13 @@ body {
 }
 
 
-/* Landing page post grid*/
+/* -----------------------------
+   Landing page: post cards
+------------------------------ */
 
 .post-feed-section {
     padding: 0.75rem 1rem 6rem;
 }
-
 
 .mira-post-card {
     display: block;
@@ -103,13 +111,10 @@ body {
     border-radius: 0.5rem;
 }
 
-/* Only affects real uploaded images */
 img.mira-post-image {
-    display: block;
     object-fit: cover;
 }
 
-/* Only affects placeholder div */
 div.mira-post-image {
     display: flex;
     align-items: center;
@@ -132,7 +137,80 @@ div.mira-post-image {
 }
 
 
-/* Scroll arrow*/
+/* -----------------------------
+   Post detail page
+------------------------------ */
+
+.post-detail-nav .mira-navbar,
+.post-detail-section {
+    max-width: 720px;
+    margin: 0 auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.post-detail-nav .mira-nav-links {
+    flex: 1;
+}
+
+.post-author-id {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 0;
+}
+
+.post-author-placeholder {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #212529;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    font-size: 0.9rem;
+}
+
+.post-follow-btn {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.55rem;
+    white-space: nowrap;
+    border-radius: 3rem;
+}
+
+.post-share-btn {
+    color: #212529;
+    font-size: 1.35rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.post-share-btn:hover {
+    color: #0d6efd;
+}
+
+.post-detail-image {
+    height: 420px;
+    object-fit: cover;
+}
+
+.carousel-indicators [data-bs-target] {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    display: none;
+}
+
+
+/* -----------------------------
+   Shared scroll arrow
+------------------------------ */
 
 .scroll-down-arrow {
     text-align: center;
@@ -142,7 +220,9 @@ div.mira-post-image {
 }
 
 
-/* Bottom mobile navigation*/
+/* -----------------------------
+   Bottom mobile navigation
+------------------------------ */
 
 .bottom-mobile-nav {
     position: fixed;
@@ -175,7 +255,9 @@ div.mira-post-image {
 }
 
 
-/* Tablet view */
+/* -----------------------------
+   Tablet view
+------------------------------ */
 
 @media screen and (min-width: 768px) {
 
@@ -183,11 +265,6 @@ div.mira-post-image {
     .post-feed-section {
         max-width: 1000px;
         margin: 0 auto;
-    }
-
-    .mira-post-grid {
-        column-count: 3;
-        column-gap: 1rem;
     }
 
     .topic-btn {
@@ -206,10 +283,17 @@ div.mira-post-image {
         max-width: 350px;
         margin-left: auto;
     }
+
+    .post-detail-image {
+        height: 500px;
+    }
 }
 
 
-/* Desktop */
+/* -----------------------------
+   Desktop view
+------------------------------ */
+
 @media screen and (min-width: 1024px) {
     .mira-navbar {
         max-width: 1200px;
@@ -219,16 +303,17 @@ div.mira-post-image {
     .mira-search-form {
         max-width: 420px;
     }
+
+    .bottom-mobile-nav {
+        display: none;
+    }
 }
+
 
 @media screen and (min-width: 1200px) {
 
     .topic-filter-section,
     .post-feed-section {
         max-width: 1140px;
-    }
-
-    .mira-post-grid {
-        column-gap: 1.25rem;
     }
 }
