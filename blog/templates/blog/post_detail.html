@@ -97,7 +97,7 @@
         {{ post.created_at|date:"d M Y" }}
     </p>
 
-    <h1 class="mira-post-title post-detail-title">
+    <h1 class="post-detail-title">
         {{ post.title }}
     </h1>
 
@@ -115,7 +115,9 @@
 
 </section>
 
+<!-- Post detail bottom action bar -->
 <nav class="post-bottom-action-bar" aria-label="Post actions">
+  
     <form class="post-comment-form" action="#" method="post">
         {% csrf_token %}
         <input 
