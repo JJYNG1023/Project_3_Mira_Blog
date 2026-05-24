@@ -157,10 +157,17 @@
 <!-- Post detail bottom action bar -->
 <nav class="post-bottom-action-bar" aria-label="Post actions">
   
+    {% if user.is_authenticated %}
     <form class="post-comment-form" method="post">
         {% csrf_token %}
         {{ comment_form.content }}
     </form>
+
+    {% else %}
+    <a href="{% url 'account_login' %}" class="post-comment-input text-decoration-none">
+        Sign in to comment
+    </a>
+    {% endif %}
 
     <a href="#" class="bottom-nav-item" aria-label="Bookmark post">
         <i class="bi bi-bookmark"></i>

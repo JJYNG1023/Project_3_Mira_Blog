@@ -139,6 +139,19 @@ p {
     opacity: 1;
 }
 
+/* Authentication pages */
+.auth-card {
+    width: 100%;
+    max-width: 360px;
+    min-height: 560px;
+}
+
+.auth-btn {
+    padding: 0.25rem 1rem;
+    border: 1px solid var(--secondary-color);
+    border-radius: var(--radius-pill);
+}
+
 /* -----------------------------
    Landing page: topic filters
 ------------------------------ */
@@ -420,6 +433,7 @@ div.mira-post-image {
     border-radius: var(--radius-sm);
     padding: 0.05rem 1.3rem;
 }
+
 
 
 /* -----------------------------

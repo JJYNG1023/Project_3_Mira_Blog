@@ -22,6 +22,9 @@ def post_detail(request, slug):
     # If the request method is not POST, create an empty instance of the CommentForm to be rendered in the template for users to submit new comments.
     # only authenticated users can submit comments, if the form is valid, it creates a new comment instance, associates it with the current post and the authenticated user, and saves it to the database. After saving the comment, it redirects the user back to the post detail page to see their newly added comment.
     if request.method == 'POST':
+        if not request.user.is_authenticated:
+            return redirect('account_login')
+            
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid() and request.user.is_authenticated:
             comment = comment_form.save(commit=False)
