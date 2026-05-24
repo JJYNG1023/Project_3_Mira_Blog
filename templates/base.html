@@ -34,19 +34,23 @@
 
         <!-- Navbar content -->
             <div class="mira-nav-links">
-                <button type="button" class="btn btn-outline-primary mira-menu-btn" aria-label="Open menu">
+                <button type="button" 
+                class="btn btn-outline-primary mira-menu-btn" 
+                data-bs-toggle="offcanvas" 
+                data-bs-target="#miraNavMenu" 
+                aria-controls="miraNavMenu"
+                aria-label="Open menu">
                     <i class="bi bi-list"></i>
                 </button>
-  
+
                 <a class="nav-link mira-nav-link mira-active" href="{% url 'home' %}" aria-current="page">
-                        Explore
+                    Explore
                 </a>
 
                 <a class="nav-link mira-nav-link" href="#">
-                        Recent
+                    Recent
                 </a>
             </div>
-            
                 <!-- Search form -->
             <form class="mira-search-form" role="search" method="GET" action="#">
                 <input 
@@ -67,6 +71,58 @@
         {% block content %}
         {% endblock %}
     </main>
+
+<!-- Hamburger menu offcanvas -->
+<div class="offcanvas offcanvas-start mira-nav-modal" tabindex="-1" id="miraNavMenu" aria-labelledby="miraNavMenuLabel">
+    <div class="offcanvas-header">
+        <h2 class="offcanvas-title fs-5" id="miraNavMenuLabel">Menu</h2>
+
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+
+    <div class="offcanvas-body">
+        <nav class="nav flex-column gap-2" aria-label="Main menu">
+
+            {% if user.is_authenticated %}
+                <span class="nav-link px-0 text-dark fw-bold">
+                    Hi, {{ user.username }}
+                </span>
+
+                <a href="#" class="nav-link px-0 text-muted">My Blog</a>
+                <a href="#" class="nav-link px-0 text-muted">Notification</a>
+                <a href="#" class="nav-link px-0 text-muted">Liked Posts</a>
+                <a href="#" class="nav-link px-0 text-muted">Fav Posts</a>
+                <a href="#" class="nav-link px-0 text-muted">Viewed Posts?</a>
+
+                <hr>
+
+                <a href="#" class="nav-link px-0 text-dark">Create Posts</a>
+                <a href="#" class="nav-link px-0 text-muted">Draft Posts</a>
+
+                <hr>
+
+                <a href="#" class="nav-link px-0 text-dark">Collaboration</a>
+                <a href="#" class="nav-link px-0 text-dark">About Us</a>
+                <a href="#" class="nav-link px-0 text-dark">Contact</a>
+
+                <hr>
+
+                <a href="{% url 'account_logout' %}" class="nav-link px-0 text-dark">Logout</a>
+
+            {% else %}
+                <a href="{% url 'account_login' %}" class="nav-link px-0 text-dark">Sign in</a>
+                <a href="{% url 'account_signup' %}" class="nav-link px-0 text-dark">Register</a>
+
+                <hr>
+
+                <a href="#" class="nav-link px-0 text-dark">Collaboration</a>
+                <a href="#" class="nav-link px-0 text-dark">About Us</a>
+                <a href="#" class="nav-link px-0 text-dark">Contact</a>
+            {% endif %}
+
+        </nav>
+    </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="{% static 'blog/js/script.js' %}"></script>

@@ -128,6 +128,16 @@ p {
     border-radius: 15px;
 }
 
+/* off canvas menu styles */
+.mira-nav-modal {
+    width: 70%;
+    max-width: 320px;
+}
+
+.mira-nav-modal hr {
+    border-top: 2px solid var(--secondary-color);
+    opacity: 1;
+}
 
 /* -----------------------------
    Landing page: topic filters
