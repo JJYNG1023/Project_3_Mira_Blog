@@ -145,6 +145,11 @@
                 <div class="comment-meta">
                     <span>{{ comment.created_at|date:"d M Y" }}</span>
                     <a href="#">Reply</a>
+
+                    {% if comment.author == user %}
+                        <a href="#" class="text-dark text-decoration-none">Edit</a>
+                        <a href="#" class="text-dark text-decoration-none">Delete</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
