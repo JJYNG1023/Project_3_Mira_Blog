@@ -367,11 +367,13 @@ div.mira-post-image {
     flex: 1;
 }
 
+/* Style input used in forms.py for comment submission, which is rendered in post_detail.html */
 .post-comment-input {
     width: 100%;
+    height: 36px;
     border: 1px solid var(--secondary-color);
     border-radius: var(--radius-pill);
-    padding: 0.35rem 0.9rem;
+    padding: 0 0.9rem;
     font-size: var(--font-size-base);
 }
 

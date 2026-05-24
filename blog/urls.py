@@ -8,6 +8,12 @@ urlpatterns = [
     path('blog/<slug:slug>/', views.post_detail, name='post_detail'),
     # This line is individual post detail view, which will display the details of a specific blog post based on its slug
 
+    #path('comment/<int:post_id>/edit/', views.edit_comment, name='edit_comment'),
+    # This line is added to handle the editing of comments for a specific post based on its ID
+
+    #path('comment/<int:post_id>/delete/', views.delete_comment, name='delete_comment'),
+    # This line is added to handle the deletion of comments for a specific post based on its ID
+
    # path('blog/', views.home, name='blog'), 
     # This line is added to handle the /blog/ URL and render the same home view
 
