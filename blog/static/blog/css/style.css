@@ -152,6 +152,37 @@ p {
     border-radius: var(--radius-pill);
 }
 
+
+/* Popup messages */
+.message-popup {
+    top: 4.5rem;
+    z-index: 2000;
+    width: 80%;
+    max-width: 320px;
+    animation: fadeOutMessage 5s forwards;
+}
+
+.message-popup .alert {
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+}
+
+@keyframes fadeOutMessage {
+    0% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
 /* -----------------------------
    Landing page: topic filters
 ------------------------------ */

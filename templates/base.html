@@ -27,6 +27,16 @@
 </head>
 <body>
 
+{% if messages %}
+    <div class="position-fixed top-0 start-50 translate-middle-x mt-3 z-3 message-popup">
+        {% for message in messages %}
+            <div class="alert alert-success  text-center shadow-sm mb-0" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
 {% block navbar %}
    <header>
      <nav class="navbar bg-light shadow-sm fixed-top">
@@ -92,7 +102,13 @@
                 <a href="#" class="nav-link px-0 text-muted">Notification</a>
                 <a href="#" class="nav-link px-0 text-muted">Liked Posts</a>
                 <a href="#" class="nav-link px-0 text-muted">Fav Posts</a>
-                <a href="#" class="nav-link px-0 text-muted">Viewed Posts?</a>
+                
+                <form method="post" action="{% url 'account_logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="nav-link px-0 text-dark bg-transparent border-0">
+                        Sign Out
+                    </button>
+                </form>
 
                 <hr>
 
@@ -105,9 +121,6 @@
                 <a href="#" class="nav-link px-0 text-dark">About Us</a>
                 <a href="#" class="nav-link px-0 text-dark">Contact</a>
 
-                <hr>
-
-                <a href="{% url 'account_logout' %}" class="nav-link px-0 text-dark">Logout</a>
 
             {% else %}
                 <a href="{% url 'account_login' %}" class="nav-link px-0 text-dark">Log in</a>
