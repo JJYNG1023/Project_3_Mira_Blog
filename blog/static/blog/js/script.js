@@ -30,3 +30,13 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+
+// Create post image preview
+document.addEventListener("DOMContentLoaded", function () {
+    const imageInput = document.getElementById("imageInput");
+    const imagePreviewWrapper = document.getElementById("imagePreviewWrapper");
+
+    if (!imageInput || !imagePreviewWrapper) {
+        return;
+    }
