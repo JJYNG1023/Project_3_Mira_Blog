@@ -11,6 +11,10 @@ urlpatterns = [
     path('blog/<slug:slug>/like/', views.like_post, name='like_post'),
     # This line is added to handle the liking page
 
+    path('comment/<int:comment_id>/like/', views.like_comment, name='like_comment'),
+    # This line is added to handle the liking of comments
+
+
    # path('comment/<int:post_id>/edit/', views.edit_comment, name='edit_comment'),
     # This line is added to handle the editing of comments for a specific post based on its ID
 

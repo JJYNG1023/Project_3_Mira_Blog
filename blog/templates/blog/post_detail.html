@@ -133,8 +133,19 @@
                         {{ comment.author.username }}
                     </span>
 
-                    <a href="#" class="comment-like" aria-label="Like comment">
-                        <i class="bi bi-heart"></i>
+                    <a href="{% url 'like_comment' comment.id %}" 
+                    class="comment-like text-decoration-none d-flex align-items-center gap-1" 
+                    aria-label="Like comment">
+
+                        {% if user.is_authenticated and user in comment.likes.all %}
+                            <i class="bi bi-heart-fill"></i>
+                        {% else %}
+                            <i class="bi bi-heart"></i>
+                        {% endif %}
+
+                        <span class="small">
+                            {{ comment.likes.count }}
+                        </span>
                     </a>
                 </div>
 
@@ -223,8 +234,19 @@
                                             {{ reply.author.username }}
                                         </span>
 
-                                        <a href="#" class="comment-like" aria-label="Like reply">
-                                            <i class="bi bi-heart"></i>
+                                        <a href="{% url 'like_comment' reply.id %}" 
+                                        class="comment-like text-decoration-none d-flex align-items-center gap-1" 
+                                        aria-label="Like reply">
+
+                                            {% if user.is_authenticated and user in reply.likes.all %}
+                                                <i class="bi bi-heart-fill"></i>
+                                            {% else %}
+                                                <i class="bi bi-heart"></i>
+                                            {% endif %}
+
+                                            <span class="small">
+                                                {{ reply.likes.count }}
+                                            </span>
                                         </a>
                                     </div>
 

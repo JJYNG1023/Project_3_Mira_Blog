@@ -117,5 +117,23 @@ def like_post(request, slug):
         messages.success(request, 'Post added to liked posts.')
 
     return redirect(
-        f"{reverse('post_detail', kwargs={'slug': post.slug})}#post-actions"
-    )
+        f"{reverse('post_detail', kwargs={'slug': post.slug})}#post-actions")
+
+
+# like and unlike comment
+def like_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id, is_approved=True)
+    post = comment.post
+
+    if not request.user.is_authenticated:
+        return redirect('account_login')
+
+    if request.user in comment.likes.all():
+        comment.likes.remove(request.user)
+        messages.success(request, 'Comment like removed.')
+    else:
+        comment.likes.add(request.user)
+        messages.success(request, 'Comment liked.')
+
+    return redirect(
+        f"{reverse('post_detail', kwargs={'slug': post.slug})}#comment-{comment.id}")
