@@ -26,7 +26,7 @@ urlpatterns = [
    # path('search/', views.search, name='search'),
     # This line is added to handle the search functionality at the /search/ URL
 
-   # path('create_post/', views.create_post, name='create_post'),
+    path('create_post/', views.create_post, name='create_post'),
     # This line is added to handle the creation of new blog posts at the /create_post/ URL
 
    # path('profile/', views.profile, name='profile'),

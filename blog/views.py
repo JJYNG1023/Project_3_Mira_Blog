@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404 , redirect
 from django.urls import reverse
 from django.contrib import messages
-from .models import Post, Tag , Comment
-from .forms import CommentForm
+from .models import Post, Tag , Comment, PostImage
+from .forms import CommentForm , PostForm
 
 # Create your views here.
 def home(request):
@@ -199,3 +199,43 @@ def my_blog(request):
     }
 
     return render(request, 'blog/my_blog.html', context)
+
+# create post view and form 
+def create_post(request):
+    if not request.user.is_authenticated:
+        return redirect('account_login')
+
+    if request.method == 'POST':
+        post_form = PostForm(request.POST)
+
+        images = request.FILES.getlist('images')
+
+        if len(images) > 5:
+            messages.error(request, 'You can upload a maximum of 5 images.')
+        elif post_form.is_valid():
+            post = post_form.save(commit=False)
+            post.author = request.user
+            post.save()
+            post_form.save_m2m()
+
+            for image in images:
+                PostImage.objects.create(
+                    post=post,
+                    image=image
+                )
+
+            if images:
+                post.featured_image = images[0]
+                post.save()
+
+            messages.success(request, 'Post has been created.')
+
+            return redirect('post_detail', slug=post.slug)
+    else:
+        post_form = PostForm()
+
+    context = {
+        'post_form': post_form,
+    }
+
+    return render(request, 'blog/create_post.html', context)
