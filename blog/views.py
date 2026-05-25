@@ -137,3 +137,43 @@ def like_comment(request, comment_id):
 
     return redirect(
         f"{reverse('post_detail', kwargs={'slug': post.slug})}#comment-{comment.id}")
+
+
+# Add bookmark and remove bookmark for post
+def bookmark_post(request, slug):
+    post = get_object_or_404(Post, slug=slug, is_published=True)
+
+    if not request.user.is_authenticated:
+        return redirect('account_login')
+
+    if request.user in post.bookmarked.all():
+        post.bookmarked.remove(request.user)
+        messages.success(request, 'Post removed from bookmarks.')
+    else:
+        post.bookmarked.add(request.user)
+        messages.success(request, 'Post bookmarked.')
+
+    return redirect(
+        f"{reverse('post_detail', kwargs={'slug': post.slug})}#post-actions"
+    )
+
+
+# Show all bookmarked posts
+def bookmarked_posts(request):
+    if not request.user.is_authenticated:
+        return redirect('account_login')
+
+    posts = Post.objects.filter(
+        bookmarked=request.user,
+        is_published=True
+    )
+
+    tags = Tag.objects.all()
+
+    context = {
+        'posts': posts,
+        'tags': tags,
+        'page_title': 'Bookmarked Posts',
+    }
+
+    return render(request, 'blog/index.html', context)

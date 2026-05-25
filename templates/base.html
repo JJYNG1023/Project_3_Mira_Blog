@@ -100,7 +100,7 @@
 
                 <a href="#" class="nav-link px-0 text-muted">My Blog</a>
                 <a href="#" class="nav-link px-0 text-muted">Notification</a>
-                <a href="#" class="nav-link px-0 text-muted">Fav Posts</a>
+                <a href="{% url 'bookmarked_posts' %}" class="nav-link px-0 text-muted">Bookmarked Posts</a>
                 
                 <form method="post" action="{% url 'account_logout' %}">
                     {% csrf_token %}

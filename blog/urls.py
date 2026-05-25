@@ -14,18 +14,14 @@ urlpatterns = [
     path('comment/<int:comment_id>/like/', views.like_comment, name='like_comment'),
     # This line is added to handle the liking of comments
 
+    path('blog/<slug:slug>/bookmark/', views.bookmark_post, name='bookmark_post'),
+    # This line is added to handle the bookmarking of posts
 
-   # path('comment/<int:post_id>/edit/', views.edit_comment, name='edit_comment'),
-    # This line is added to handle the editing of comments for a specific post based on its ID
-
-    #path('comment/<int:post_id>/delete/', views.delete_comment, name='delete_comment'),
-    # This line is added to handle the deletion of comments for a specific post based on its ID
+    path('bookmarks/', views.bookmarked_posts, name='bookmarked_posts'),   
+    # This line is added to handle the view for displaying all bookmarked posts for the authenticated user
 
    # path('blog/', views.home, name='blog'), 
     # This line is added to handle the /blog/ URL and render the same home view
-
-   # path('blog/', views.post_list, name='post_detail'),
-    # This displays the list of blog posts at the /blog/ URL
 
    # path('search/', views.search, name='search'),
     # This line is added to handle the search functionality at the /search/ URL

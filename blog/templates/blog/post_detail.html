@@ -323,8 +323,12 @@
     </a>
     {% endif %}
 
-    <a href="#" class="bottom-nav-item" aria-label="Bookmark post">
-        <i class="bi bi-bookmark"></i>
+    <a href="{% url 'bookmark_post' post.slug %}" class="bottom-nav-item text-decoration-none" aria-label="Bookmark post">
+        {% if user.is_authenticated and user in post.bookmarked.all %}
+            <i class="bi bi-bookmark-fill"></i>
+        {% else %}
+            <i class="bi bi-bookmark"></i>
+        {% endif %}
     </a>
 
     <a href="{% url 'like_post' post.slug %}" 
