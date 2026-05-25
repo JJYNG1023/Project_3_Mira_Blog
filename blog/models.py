@@ -51,6 +51,8 @@ class Comment(models.Model):
         on_delete=models.CASCADE,
         related_name='replies'
     )
+    likes = models.ManyToManyField(User, related_name='liked_comments', blank=True)
+
     is_approved = models.BooleanField(default=True)
 
     class Meta:
