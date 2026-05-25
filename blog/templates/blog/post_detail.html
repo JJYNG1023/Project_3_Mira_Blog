@@ -116,7 +116,7 @@
 </section>
 
 <!-- Comments section -->
-<section class="post-comments-section">
+<section class="post-comments-section" id="comments">
 
     <h2>Comments:</h2>
 
@@ -166,8 +166,17 @@
                     <a href="#">Reply</a>
 
                     {% if comment.author == user %}
-                        <a href="?edit_comment={{ comment.id }}#comment-{{ comment.id }}" class="text-dark text-decoration-none">Edit</a>
-                        <a href="#" class="text-dark text-decoration-none">Delete</a>
+                        <a href="?edit_comment={{ comment.id }}#comment-{{ comment.id }}" 
+                        class="text-dark comment-meta text-decoration-none">
+                        Edit
+                    </a>
+                        <form method="post" class="d-inline">
+                            {% csrf_token %}
+                            <input type="hidden" name="delete_comment_id" value="{{ comment.id }}">
+                            <button type="submit" class="btn btn-link p-0 text-dark comment-meta text-decoration-none">
+                                Delete
+                            </button>
+                        </form>
                     {% endif %}
                 </div>
             </div>
