@@ -8,6 +8,9 @@ urlpatterns = [
     path('blog/<slug:slug>/', views.post_detail, name='post_detail'),
     # This line is individual post detail view, which will display the details of a specific blog post based on its slug
 
+    path('blog/<slug:slug>/like/', views.like_post, name='like_post'),
+    # This line is added to handle the liking page
+
    # path('comment/<int:post_id>/edit/', views.edit_comment, name='edit_comment'),
     # This line is added to handle the editing of comments for a specific post based on its ID
 

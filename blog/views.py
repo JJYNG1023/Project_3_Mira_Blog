@@ -90,7 +90,7 @@ def post_detail(request, slug):
                 return redirect('post_detail', slug=post.slug)
     else:
         comment_form = CommentForm()
-       
+
     context = {
         'post': post,
         'comments': comments,
@@ -101,4 +101,21 @@ def post_detail(request, slug):
     }
 
     return render(request, 'blog/post_detail.html', context)
-    
+
+#like and unlike post
+def like_post(request, slug):
+    post = get_object_or_404(Post, slug=slug, is_published=True)
+
+    if not request.user.is_authenticated:
+        return redirect('account_login')
+
+    if request.user in post.likes.all():
+        post.likes.remove(request.user)
+        messages.success(request, 'Post removed from liked posts.')
+    else:
+        post.likes.add(request.user)
+        messages.success(request, 'Post added to liked posts.')
+
+    return redirect(
+        f"{reverse('post_detail', kwargs={'slug': post.slug})}#post-actions"
+    )

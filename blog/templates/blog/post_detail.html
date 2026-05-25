@@ -97,7 +97,7 @@
         {{ post.created_at|date:"d M Y" }}
     </p>
 
-    <h1 class="post-detail-title">
+    <h1>
         {{ post.title }}
     </h1>
 
@@ -287,7 +287,7 @@
 </section>
 
 <!-- Post detail bottom action bar -->
-<nav class="post-bottom-action-bar" aria-label="Post actions">
+<nav class="post-bottom-action-bar" id="post-actions" aria-label="Post actions">
   
     {% if user.is_authenticated %}
     <form class="post-comment-form" method="post">
@@ -305,8 +305,19 @@
         <i class="bi bi-bookmark"></i>
     </a>
 
-    <a href="#" class="bottom-nav-item" aria-label="Like post">
-        <i class="bi bi-heart"></i>
+    <a href="{% url 'like_post' post.slug %}" 
+   class="bottom-nav-item d-flex align-items-center gap-1 text-decoration-none" 
+   aria-label="Like post">
+
+        {% if user.is_authenticated and user in post.likes.all %}
+            <i class="bi bi-heart-fill"></i>
+        {% else %}
+            <i class="bi bi-heart"></i>
+        {% endif %}
+
+        <span class="small">
+            {{ post.likes.count }}
+        </span>
     </a>
 </nav>
 
