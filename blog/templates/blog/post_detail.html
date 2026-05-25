@@ -121,7 +121,7 @@
     <h2>Comments:</h2>
 
     {% for comment in comments %}
-        <div class="comment-item">
+        <div class="comment-item" id="comment-{{ comment.id }}">
 
             <div class="post-author-placeholder">
                 <i class="bi bi-person"></i>
@@ -138,16 +138,35 @@
                     </a>
                 </div>
 
+                {% if edit_comment and edit_comment.id == comment.id %}
+                <form method="post" class="mb-2">
+                    {% csrf_token %}
+                    <input type="hidden" name="comment_id" value="{{ comment.id }}">
+
+                    {{ edit_comment_form.content }}
+
+                    <div class="mt-2">
+                        <button type="submit" class="btn btn-sm btn-dark">
+                            Update
+                        </button>
+
+                        <a href="{% url 'post_detail' post.slug %}" class="btn btn-sm btn-outline-secondary">
+                            Cancel
+                        </a>
+                    </div>
+                </form>
+            {% else %}
                 <p class="mira-post-preview">
                     {{ comment.content }}
                 </p>
+            {% endif %}
 
                 <div class="comment-meta">
                     <span>{{ comment.created_at|date:"d M Y" }}</span>
                     <a href="#">Reply</a>
 
                     {% if comment.author == user %}
-                        <a href="#" class="text-dark text-decoration-none">Edit</a>
+                        <a href="?edit_comment={{ comment.id }}#comment-{{ comment.id }}" class="text-dark text-decoration-none">Edit</a>
                         <a href="#" class="text-dark text-decoration-none">Delete</a>
                     {% endif %}
                 </div>
