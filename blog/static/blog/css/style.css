@@ -492,6 +492,27 @@ div.mira-post-image {
    create post image upload
 ------------------------------ */
 
+.image-upload-box {
+    width: 72px;
+    height: 72px;
+    border: 1px solid var(--secondary-color);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-xl);
+    color: var(--secondary-color);
+    background-color: var(--background-color);
+    cursor: pointer;
+}
+
+.image-preview-thumb {
+    width: 72px;
+    height: 72px;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--secondary-color);
+}
 
 /* -----------------------------
    Bottom mobile navigation

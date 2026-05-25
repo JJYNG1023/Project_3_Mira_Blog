@@ -23,6 +23,75 @@
 
 </header>
 
+<section class="container post-detail-section">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ post_form.non_field_errors }}
+        <!--area for uploading images-->
+        <div class="mb-4">
+            <label class="form-label fw-bold">
+                Images
+            </label>
+            <div id="imagePreviewWrapper" class="d-flex flex-wrap gap-2 mb-2">
+                <label for="imageInput" class="image-upload-box">
+                    <i class="bi bi-plus-lg"></i>
+                </label>
+            </div>
+
+            <input class="d-none" type="file" id="imageInput" name="images" accept="image/*" multiple>
+            <p class="mira-post-preview text-muted"> 
+                upload up to 5 images
+            </p>
+        </div>
+
+        <!--title field-->
+        <div class="mb-3">
+            <label for="{{ post_form.title.id_for_label }}" class="form-label fw-bold">
+                Title
+            </label>
+            {{ post_form.title }}
+            {{ post_form.title.errors }}
+        </div>
+        
+        <!--content field-->
+        <div class="mb-3">
+            <label for="{{ post_form.content.id_for_label }}" class="form-label fw-bold">
+                Content
+            </label>
+            {{ post_form.content }}
+            {{ post_form.content.errors }}
+        </div>
+
+        <!--tag filter-->
+        <div class="mb-3">
+            <label class="form-label fw-bold ">
+                Tags
+            </label>
+            {{ post_form.tags }}
+            {{ post_form.tags.errors }}
+        </div>
+
+        <!-- Publish checkbox -->
+        <div class="form-check mb-4">
+            {{ post_form.is_published }}
+            <label for="{{ post_form.is_published.id_for_label }}" class="form-check-label">
+                Publish now
+            </label>
+        </div>
+
+        <div class="d-flex justify-content-center gap-3 mb-5">
+            <button type="submit" class="btn btn-dark rounded-pill px-4">
+                Post
+            </button>
+
+            <a href="{% url 'home' %}" class="btn btn-outline-dark rounded-pill px-4">
+                Cancel
+            </a>
+        </div>
+
+    </form>
+
+</section>
 
 
 {% endblock %}
