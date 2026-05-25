@@ -176,4 +176,4 @@ def bookmarked_posts(request):
         'page_title': 'Bookmarked Posts',
     }
 
-    return render(request, 'blog/index.html', context)
+    return render(request, 'blog/bookmark.html', context)
