@@ -1,6 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
     const topicButtons = document.querySelectorAll('.topic-btn');
-    const postCards = document.querySelectorAll('.mira-post-card');
+
+    let postCards = document.querySelectorAll('.post-card-wrapper');
+
+    if (postCards.length === 0) {
+        postCards = document.querySelectorAll('.mira-post-card');
+    }
 
     topicButtons.forEach(function (button) {
         button.addEventListener('click', function () {

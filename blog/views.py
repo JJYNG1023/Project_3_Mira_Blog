@@ -165,15 +165,14 @@ def bookmarked_posts(request):
 
     posts = Post.objects.filter(
         bookmarked=request.user,
-        is_published=True
-    )
+        is_published=True)
 
-    tags = Tag.objects.all()
+    tags = Tag.objects.filter(
+        posts__bookmarked=request.user, posts__is_published=True).distinct()
 
     context = {
         'posts': posts,
         'tags': tags,
-        'page_title': 'Bookmarked Posts',
     }
 
     return render(request, 'blog/bookmark.html', context)

@@ -479,6 +479,14 @@ div.mira-post-image {
 }
 
 /* -----------------------------
+   bookmark filter
+------------------------------ */
+.bookmark-filter-wrapper {
+    justify-content: flex-start;
+    gap: 0.5rem;
+}
+
+/* -----------------------------
    Bottom mobile navigation
 ------------------------------ */
 
