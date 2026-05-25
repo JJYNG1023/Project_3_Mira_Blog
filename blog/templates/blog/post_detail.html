@@ -163,11 +163,15 @@
 
                 <div class="comment-meta">
                     <span>{{ comment.created_at|date:"d M Y" }}</span>
-                    <a href="#">Reply</a>
+                {% if user.is_authenticated %}
+                    <a href="?reply_to={{ comment.id }}#comment-{{ comment.id }}">Reply</a>
+                {% else %}
+                    <a href="{% url 'account_login' %}">Reply</a>
+                {% endif %}
 
                     {% if comment.author == user %}
                         <a href="?edit_comment={{ comment.id }}#comment-{{ comment.id }}" 
-                        class="text-dark comment-meta text-decoration-none">
+                        class="text-dark text-decoration-none">
                         Edit
                     </a>
                         <form method="post" class="d-inline">
@@ -178,6 +182,101 @@
                             </button>
                         </form>
                     {% endif %}
+                </div>
+                
+                <!-- comment Reply form -->
+                {% if reply_to_comment and reply_to_comment.id == comment.id %}
+                    <form method="post" class="mt-2">
+                        {% csrf_token %}
+
+                        <input type="hidden" name="parent_id" value="{{ comment.id }}">
+
+                        {{ comment_form.content }}
+
+                        <div class="mt-2">
+                            <button type="submit" class="btn btn-sm btn-dark">
+                                Reply
+                            </button>
+
+                            <a href="{% url 'post_detail' post.slug %}#comment-{{ comment.id }}" 
+                               class="btn btn-sm btn-outline-secondary">
+                                Cancel
+                            </a>
+                        </div>
+                    </form>
+                {% endif %}
+
+                <!-- Replies display -->
+                <div class="comment-replies mt-2">
+                    {% for reply in comment.replies.all %}
+                        {% if reply.is_approved %}
+                            <div class="comment-item reply-item" id="comment-{{ reply.id }}">
+
+                                <div class="post-author-placeholder">
+                                    <i class="bi bi-person"></i>
+                                </div>
+
+                                <div class="comment-content">
+
+                                    <div class="comment-header">
+                                        <span class="mira-nav-link mira-active">
+                                            {{ reply.author.username }}
+                                        </span>
+
+                                        <a href="#" class="comment-like" aria-label="Like reply">
+                                            <i class="bi bi-heart"></i>
+                                        </a>
+                                    </div>
+
+                                    {% if edit_comment and edit_comment.id == reply.id %}
+                                        <form method="post" class="mb-2">
+                                            {% csrf_token %}
+
+                                            <input type="hidden" name="comment_id" value="{{ reply.id }}">
+
+                                            {{ edit_comment_form.content }}
+
+                                            <div class="mt-2">
+                                                <button type="submit" class="btn btn-sm btn-dark">
+                                                    Update
+                                                </button>
+
+                                                <a href="{% url 'post_detail' post.slug %}#comment-{{ reply.id }}" 
+                                                class="btn btn-sm btn-outline-secondary">
+                                                    Cancel
+                                                </a>
+                                            </div>
+                                        </form>
+                                    {% else %}
+                                        <p class="mira-post-preview">
+                                            {{ reply.content }}
+                                        </p>
+                                    {% endif %}
+
+                                    <div class="comment-meta">
+                                        <span>{{ reply.created_at|date:"d M Y" }}</span>
+
+                                        {% if reply.author == user %}
+                                            <a href="?edit_comment={{ reply.id }}#comment-{{ reply.id }}" 
+                                            class="text-dark text-decoration-none">
+                                                Edit
+                                            </a>
+
+                                            <form method="post" class="d-inline">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="delete_comment_id" value="{{ reply.id }}">
+
+                                                <button type="submit" class="btn btn-link p-0 text-dark comment-meta text-decoration-none">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        {% endif %}
+                                    </div>
+
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
                 </div>
             </div>
         </div>

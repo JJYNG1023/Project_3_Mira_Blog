@@ -29,6 +29,13 @@ def post_detail(request, slug):
         edit_comment = get_object_or_404(Comment, id=edit_comment_id, post=post, author=request.user)
 
         edit_comment_form = CommentForm(instance=edit_comment)
+    
+    #reply comment
+    reply_to_id = request.GET.get('reply_to')  
+    reply_to_comment = None
+
+    if reply_to_id and request.user.is_authenticated:
+        reply_to_comment = get_object_or_404(Comment, id=reply_to_id, post=post, parent__isnull=True, is_approved=True)
 
     # If the request method is not POST, create an empty instance of the CommentForm to be rendered in the template for users to submit new comments.
     # only authenticated users can submit comments, if the form is valid, it creates a new comment instance, associates it with the current post and the authenticated user, and saves it to the database. After saving the comment, it redirects the user back to the post detail page to see their newly added comment.
@@ -38,7 +45,9 @@ def post_detail(request, slug):
         
         comment_id = request.POST.get('comment_id')
         delete_comment_id = request.POST.get('delete_comment_id')
-   
+        parent_id = request.POST.get('parent_id')
+
+
     #delete exiting comment       
         if delete_comment_id:
             comment = get_object_or_404(Comment, id=delete_comment_id, post=post, author=request.user)
@@ -65,9 +74,19 @@ def post_detail(request, slug):
                 comment = comment_form.save(commit=False)
                 comment.post = post
                 comment.author = request.user
-                comment.save()
-                messages.success(request, 'Comment has been posted')
 
+                parent_id = request.POST.get('parent_id')
+                if parent_id:
+                    parent_comment = get_object_or_404(Comment, id=parent_id, post=post, parent__isnull=True)
+                    comment.parent = parent_comment
+
+                comment.save()
+
+                if parent_id:
+                    messages.success(request, 'Reply has been posted')
+                    return redirect(f"{reverse('post_detail', kwargs={'slug': post.slug})}#comment-{parent_id}")
+
+                messages.success(request, 'Comment has been posted')
                 return redirect('post_detail', slug=post.slug)
     else:
         comment_form = CommentForm()
@@ -78,6 +97,7 @@ def post_detail(request, slug):
         'comment_form': comment_form,
         'edit_comment': edit_comment,
         'edit_comment_form': edit_comment_form,
+        'reply_to_comment': reply_to_comment,
     }
 
     return render(request, 'blog/post_detail.html', context)
