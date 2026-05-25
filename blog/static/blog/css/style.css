@@ -144,6 +144,7 @@ p {
     width: 100%;
     max-width: 360px;
     min-height: 560px;
+    border: none;
 }
 
 .auth-btn {

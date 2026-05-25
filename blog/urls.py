@@ -20,8 +20,8 @@ urlpatterns = [
     path('bookmarks/', views.bookmarked_posts, name='bookmarked_posts'),   
     # This line is added to handle the view for displaying all bookmarked posts for the authenticated user
 
-   # path('blog/', views.home, name='blog'), 
-    # This line is added to handle the /blog/ URL and render the same home view
+    path('my-blog/', views.my_blog, name='my_blog'),
+    # This line is added to handle the view for displaying posts created by the logged-in user
 
    # path('search/', views.search, name='search'),
     # This line is added to handle the search functionality at the /search/ URL

@@ -176,3 +176,26 @@ def bookmarked_posts(request):
     }
 
     return render(request, 'blog/bookmark.html', context)
+
+
+# Show posts created by the logged-in user
+def my_blog(request):
+    if not request.user.is_authenticated:
+        return redirect('account_login')
+
+    posts = Post.objects.filter(
+        author=request.user,
+        is_published=True
+    )
+
+    tags = Tag.objects.filter(
+        posts__author=request.user,
+        posts__is_published=True
+    ).distinct()
+
+    context = {
+        'posts': posts,
+        'tags': tags,
+    }
+
+    return render(request, 'blog/my_blog.html', context)
