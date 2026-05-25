@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404 , redirect
 from django.urls import reverse
+from django.contrib import messages
 from .models import Post, Tag , Comment
 from .forms import CommentForm
 
@@ -45,6 +46,7 @@ def post_detail(request, slug):
 
         if comment_form.is_valid():
             comment_form.save()
+            messages.success(request, 'Comment has been updated')
             return redirect(f"{reverse('post_detail', kwargs={'slug': post.slug})}#comment-{comment.id}")
 
     #create new comment
@@ -56,6 +58,7 @@ def post_detail(request, slug):
             comment.post = post
             comment.author = request.user
             comment.save()
+            messages.success(request, 'Comment has been posted')
 
             return redirect('post_detail', slug=post.slug)
     else:
