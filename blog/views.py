@@ -209,7 +209,7 @@ def create_post(request):
         post_form = PostForm(request.POST)
 
         images = request.FILES.getlist('images')
-        tag_names = request.POST.get('tags_names', '')
+        tag_names = request.POST.get('tag_names', '')
 
         if len(images) > 5:
             messages.error(request, 'You can upload a maximum of 5 images.')
@@ -231,16 +231,20 @@ def create_post(request):
                 post.tags.add(tag)
 
             #save uploaded images
+            first_post_image = None
+
             for image in images:
-                PostImage.objects.create(
+                Post_image = PostImage.objects.create(
                     post=post,
                     image=image
                 )
+                if first_post_image is None:
+                    first_post_image = Post_image
 
             #use first image as the featured image for the blog post
-            if images:
-                post.featured_image = images[0]
-                post.save()
+            if first_post_image:
+                post.featured_image = first_post_image.image
+                post.save(update_fields=['featured_image'])
 
             messages.success(request, 'Post has been created.')
 

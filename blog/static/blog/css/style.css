@@ -514,6 +514,13 @@ div.mira-post-image {
     border: 1px solid var(--secondary-color);
 }
 
+/* Style for the "Create new tag" item in the tag selection dropdown */
+.create-tag-item {
+    color: var(--secondary-color);
+    text-decoration: underline;
+    font-size: var(--font-size-base);
+}
+
 /* -----------------------------
    Bottom mobile navigation
 ------------------------------ */

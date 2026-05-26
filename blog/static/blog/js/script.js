@@ -37,68 +37,65 @@ document.addEventListener("DOMContentLoaded", function () {
     const imageInput = document.getElementById("imageInput");
     const imagePreviewWrapper = document.getElementById("imagePreviewWrapper");
 
-    if (!imageInput || !imagePreviewWrapper) {
-        return;
-    }
-    imageInput.addEventListener("change", function () {
-        const file = Array.from(imageInput.files).slice(0, 5); // Get the first file (limit to 5 files)
+    if (imageInput && imagePreviewWrapper) {
+        imageInput.addEventListener("change", function () {
+            const file = Array.from(imageInput.files).slice(0, 5); // Get the first file (limit to 5 files)
 
-        imagePreviewWrapper.innerHTML = "";
-        // Clear previous previews
+            imagePreviewWrapper.innerHTML = "";
+            // Clear previous previews
 
-        file.forEach(function (file) {
-            const reader = new FileReader();
+            file.forEach(function (file) {
+                const reader = new FileReader();
 
-            reader.onload = function (e) {
-                const img = document.createElement("img");
-                img.src = e.target.result;
-                img.classList.add("image-preview-thumb");
-                imagePreviewWrapper.appendChild(img);
-            }:
-            reader.readAsDataURL(file);
+                reader.onload = function (e) {
+                    const img = document.createElement("img");
+                    img.src = e.target.result;
+                    img.classList.add("image-preview-thumb");
+                    imagePreviewWrapper.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            });
+
+            const addButton = document.createElement("label");
+            addButton.setAttribute("for", "imageInput");
+            addButton.classList.add("image-upload-box");
+            addButton.innerHTML = '<i class="bi bi-plus-lg"></i>';
+
+            imagePreviewWrapper.appendChild(addButton);
         });
-        const addButton = document.createElement("label");
-        addButton.setAttribute("for", "imageInput");
-        addButton.classList.add("image-upload-box");
-        addButton.innerHTML = "<i class=\"bi bi-plus-lg\"></i>";
-        imagePreviewWrapper.appendChild(addButton);
-    });
-});
+    }
 
-# Create post tag preview
-document.addEventListener("DOMContentLoaded", function () {
+
+    // Create post tag preview
     const tagInput = document.getElementById("tagInput");
     const tagNames = document.getElementById("tagNames");
     const tagPreviewWrapper = document.getElementById("tagPreviewWrapper");
 
-    if (!tagInput || !tagNames || !tagPreviewWrapper) {
-        return;
-    }
+    if (tagInput && tagNames && tagPreviewWrapper) {
+        let tags = [];
 
-    let tags = [];
-
-    function updateTags() {
-        tagPreviewWrapper.innerHTML = "";
-        tags.forEach(function (tag) {
-            const tagElement = document.createElement("div");
-            tagElement.classList.add("create-tag-item");
-            tagElement.textContent = "#" + tag;
-            tagPreviewWrapper.appendChild(tagElement);
-        });
-        tagNames.value = tags.join(",");
-    }
-    tagInput.addEventListener("keydown", function (e) {
-        if (e.key === "Enter") {
-            event.preventDefault();
-
-            let tag = tagInput.value.trim();
-
-            tag = tag.replace("#", "");
-            if (tag && !tags.includes(tag)) {
-                tags.push(tag);
-                updateTags();
-            }
-            tagInput.value = "";
+        function updateTags() {
+            tagPreviewWrapper.innerHTML = "";
+            tags.forEach(function (tag) {
+                const tagElement = document.createElement("span");
+                tagElement.classList.add("create-tag-item");
+                tagElement.textContent = "#" + tag;
+                tagPreviewWrapper.appendChild(tagElement);
+            });
+            tagNames.value = tags.join(",");
         }
-    });
+        tagInput.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" || e.key === ",") {
+                e.preventDefault();
+
+                let tag = tagInput.value.trim();
+                tag = tag.replace("#", "");
+                if (tag && !tags.includes(tag)) {
+                    tags.push(tag);
+                    updateTags();
+                }
+                tagInput.value = "";
+            }
+        });
+    }
 });
