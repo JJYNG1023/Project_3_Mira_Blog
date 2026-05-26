@@ -21,7 +21,7 @@ class CommentForm(forms.ModelForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'content', 'is_published']
+        fields = ['title', 'content',]
         widgets = {
             'title': forms.TextInput(attrs={
                 'class': 'form-control rounded-0 border-dard',
@@ -30,6 +30,4 @@ class PostForm(forms.ModelForm):
                 'class': 'form-control rounded-0 border-dard',
                 'rows': 5,
                 'placeholder': 'Content',}),
-            'is_published': forms.CheckboxInput(attrs={
-                'class': 'form-check-input',}),
         }

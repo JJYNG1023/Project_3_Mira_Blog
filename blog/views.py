@@ -217,6 +217,7 @@ def create_post(request):
         elif post_form.is_valid():
             post = post_form.save(commit=False)
             post.author = request.user
+            post.is_published = True
             post.save()
 
             #create tags
