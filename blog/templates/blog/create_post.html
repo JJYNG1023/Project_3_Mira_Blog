@@ -63,14 +63,16 @@
         </div>
 
         <!--tag filter-->
-        <div class="mb-3">
-            <label class="form-label fw-bold ">
+        <div class="mb-4"
+            <label for="tagInput" class="form-label fw-bold">
                 Tags
             </label>
-            {{ post_form.tags }}
-            {{ post_form.tags.errors }}
+            <input type="text" id="tagInput" name="tags_names" class="form-control rounded-pill border-dark" placeholder="Enter tags separated by commas">
+            <input type="hidden" id="tagNames" name="tag_names">
+            <div id="tagPreviewWrapper" class="d-flex flex-wrap gap-2 mt-2">
+            </div>
         </div>
-
+        
         <!-- Publish checkbox -->
         <div class="form-check mb-4">
             {{ post_form.is_published }}
