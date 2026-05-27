@@ -29,6 +29,7 @@ urlpatterns = [
     path('create_post/', views.create_post, name='create_post'),
     # This line is added to handle the creation of new blog posts at the /create_post/ URL
 
+    path('blog/<slug:slug>/edit/', views.edit_post, name='edit_post'),
    # path('profile/', views.profile, name='profile'),
     # This line is added to handle the user profile view at the /profile/ URL
 

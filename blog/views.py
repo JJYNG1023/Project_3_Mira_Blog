@@ -214,13 +214,15 @@ def create_post(request):
         if len(images) > 5:
             messages.error(request, 'You can upload a maximum of 5 images.')
 
-        elif post_form.is_valid():
+        if post_form.is_valid():
             post = post_form.save(commit=False)
             post.author = request.user
             post.is_published = True
             post.save()
 
             #create tags
+            post.tags.clear()
+
             tags = [
                 tag.strip().replace('#','')
                 for tag in tag_names.split(',')
@@ -231,6 +233,11 @@ def create_post(request):
                 tag, created = Tag.objects.get_or_create(name=tag_name)
                 post.tags.add(tag)
 
+            messages.success(request,'Post has been updated.')
+            return redirect('post_detail', slug=post.slug)
+        else:
+            messages.error(request, 'please check the form and try again.')
+            
             #save uploaded images
             first_post_image = None
 
@@ -258,3 +265,46 @@ def create_post(request):
     }
 
     return render(request, 'blog/create_post.html', context)
+
+#edit post content and update post form
+def edit_post(request, slug):
+    if not request.user.is_authenticated:
+        return redirect('account_login')
+    
+    post = get_object_or_404(Post, slug=slug, author=request.user)
+    
+    if request.method == 'POST':
+        post_form = PostForm(request.POST, instance=post)
+        tag_names = request.POST.get('tag_names', '')
+
+        if post_form.is_valid():
+            post= post_form.save(commit=False)
+            post.author = request.user
+            post.is_published = True
+            post.save()
+            #update tags
+
+            post.tags.clear()
+            tags = [
+                tag.strip().replace('#', '')
+                for tag in tag_names.split(',')
+                if tag.strip()
+            ]
+            for tag_name in tags:
+                tag, created = Tag.objects.get_or_create(name=tag_name)
+                post.tags.add(tag)
+            
+            messages.success(request, 'Post has been updated.')
+            return redirect('post_detail', slug=post.slug)
+        else: messages.error(request,'please check the form and try again')
+    else:
+        post_form = PostForm(instance=post)
+
+    existing_tags = ','.join([tag.name for tag in post.tags.all()])
+
+    context = {
+        'post': post,
+        'post_form': post_form,
+        'existing_tags': existing_tags,
+    }
+    return render(request, 'blog/edit_post.html', context)
