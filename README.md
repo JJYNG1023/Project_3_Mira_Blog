@@ -59,12 +59,61 @@ The strategy plane of a develpers aim is to create a full stack Django web appli
 - Web should be presentable across different screen size.
 
 ##### Business goals:
+- Creating a social blog concept ideology.
+- Encourage user to engage through interactive features, making content post and find related post via search and tag filters.
+- Create platform that shares information, support collaboration, and community.
+
+### 1.05 Scope Plane_User Stories
+The user stories has been added into github kanban board and is distrubuted using MoSCoW method to prioritise the important to less important features through Must Have, Could Have and Should Have.
+
+See the [Kanban Board](https://github.com/users/JJYNG1023/projects/5) for lists of project user stories, divided into four sections of:
+1. To do list  - lists of tasks marked in MoSCoW method
+2. In progress - features currently working on
+3. In review   - review how function perform in particular section
+4. Done        - feature has been completed and marked done
+5. Review with user story  - Final testing review against the user story
+
+   
+### 1.06 Skeleton Plane_Design Choices
+The struction of Mira Blog is based on a hybrid blog/social platform, it should be a simple and accessible user journey allowing users to move between discovery, interaction, and creation features.
+
+The skeleton plan would adapt across mobile, tablet and desktop devices to improve usability and accessibility.
+On mobile view, the wireframe uses top and bottom navigation bar to support thumb navigation, allowing quick access to home, notification, user profile and create post.
+The tablet view keeps the mobile first structure but expands the posts layout into a wider grid formate to make better use of the larger screen.
+In the desktop view, the main navigation will be relocated to a left sidebar , allowing user to access main areas of the website faster.  
+
+**Below are links to the wireframe layout, ERD and handwritten note in developing the skeleton plane structure. Please read in conjunction to the below comment:**
+Click the link to see [handwritten notes]() on organising the app and pages
+Click this link to see [Link_for_Wireframe_view](https://miro.com/app/board/uXjVHRk-oeo=/?share_link_id=370277439113)
+Click this link to see [ERD](https://miro.com/app/board/uXjVHRHtjY0=/?share_link_id=138730307903)
 
 
+#### Main navigation structure
+The main structure planned for Mira contains:
+1. Home/landing page
+2. Search page
+3. blog detail page
+4. create post page
+5. notification page
+7. sign in page
+8. register page
+9. user profile page
+10. bookmark page
+11. about us and collaboration page
 
-1.05 Scope Plane_User Stories
-1.06 Skeleton Plane_Design Choices
-1.07 Styling
+The ideology of the user flow circulation is: 
+1. The user lands on the home page.
+2. the user browses the Expore and recent blog posts.
+3. the user searches for the topics their are interesed using search bar or filter tags.
+4. the user click on a blog post to view the full post.
+5. the user can share the post.
+6. the user can signin or register an account to bookmark, like and comment on the posts.
+7. only a signed in user can create a post and view their own profile.
+
+
+### 1.07 Styling
+
+
 1.08 Surface Plane_Wireframes
 2. Features
 2.01 HTML features
