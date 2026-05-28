@@ -207,22 +207,19 @@ def create_post(request):
 
     if request.method == 'POST':
         post_form = PostForm(request.POST)
-
         images = request.FILES.getlist('images')
         tag_names = request.POST.get('tag_names', '')
 
         if len(images) > 5:
             messages.error(request, 'You can upload a maximum of 5 images.')
 
-        if post_form.is_valid():
+        elif post_form.is_valid():
             post = post_form.save(commit=False)
             post.author = request.user
             post.is_published = True
             post.save()
 
             #create tags
-            post.tags.clear()
-
             tags = [
                 tag.strip().replace('#','')
                 for tag in tag_names.split(',')
@@ -233,30 +230,25 @@ def create_post(request):
                 tag, created = Tag.objects.get_or_create(name=tag_name)
                 post.tags.add(tag)
 
-            messages.success(request,'Post has been updated.')
-            return redirect('post_detail', slug=post.slug)
-        else:
-            messages.error(request, 'please check the form and try again.')
-            
             #save uploaded images
             first_post_image = None
 
             for image in images:
-                Post_image = PostImage.objects.create(
+                post_image = PostImage.objects.create(
                     post=post,
                     image=image
                 )
                 if first_post_image is None:
-                    first_post_image = Post_image
+                    first_post_image = post_image
 
             #use first image as the featured image for the blog post
             if first_post_image:
                 post.featured_image = first_post_image.image
                 post.save(update_fields=['featured_image'])
-
             messages.success(request, 'Post has been created.')
-
             return redirect('post_detail', slug=post.slug)
+        else:
+            messages.error(request, 'Please check the form and try again.')
     else:
         post_form = PostForm()
 
@@ -276,14 +268,18 @@ def edit_post(request, slug):
     if request.method == 'POST':
         post_form = PostForm(request.POST, instance=post)
         tag_names = request.POST.get('tag_names', '')
+        images = request.FILES.getlist('images')
 
-        if post_form.is_valid():
+        if len(images)>5:
+            messages.error(request,'You can only upload 5 images')
+
+        elif post_form.is_valid():
             post= post_form.save(commit=False)
             post.author = request.user
             post.is_published = True
             post.save()
+           
             #update tags
-
             post.tags.clear()
             tags = [
                 tag.strip().replace('#', '')
@@ -294,6 +290,22 @@ def edit_post(request, slug):
                 tag, created = Tag.objects.get_or_create(name=tag_name)
                 post.tags.add(tag)
             
+            # add new uploaded images
+            first_new_image = None
+            for image in images:
+                post_image = PostImage.objects.create(
+                    post=post,
+                    image=image
+                )
+
+                if first_new_image is None:
+                    first_new_image = post_image
+
+            # if no featured image exists, use the first new image
+            if first_new_image:
+                post.featured_image = first_new_image.image
+                post.save(update_fields=['featured_image'])
+
             messages.success(request, 'Post has been updated.')
             return redirect('post_detail', slug=post.slug)
         else: messages.error(request,'please check the form and try again')

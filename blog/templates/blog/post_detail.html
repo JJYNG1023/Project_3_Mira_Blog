@@ -41,57 +41,74 @@
 
 {% block content %}
 
+<!-- carousel images -->
 <section class="container post-detail-section">
 
 <div id="postImageCarousel" class="carousel slide post-detail-image-wrapper">
+    {% if post.images.all %}
+        <div class="carousel-indicators">
+            {% for image in post.images.all %}
+                <button 
+                    type="button" 
+                    data-bs-target="#postImageCarousel" 
+                    data-bs-slide-to="{{ forloop.counter0 }}" 
+                    class="{% if forloop.first %}active{% endif %}" 
+                    {% if forloop.first %}aria-current="true"{% endif %}
+                    aria-label="Slide {{ forloop.counter }}">
+                </button>
+            {% endfor %}
+        </div>
 
-    <div class="carousel-indicators">
-        <button 
-            type="button" 
-            data-bs-target="#postImageCarousel" 
-            data-bs-slide-to="0" 
-            class="active" 
-            aria-current="true" 
-            aria-label="Slide 1">
-        </button>
-    </div>
-
-    <div class="carousel-inner">
-
-        <div class="carousel-item active">
+        <div class="carousel-inner">
             {% if post.featured_image %}
-                <img 
-                    src="{{ post.featured_image.url }}" 
-                    class="d-block w-100 mira-post-image post-detail-image" 
-                    alt="{{ post.title }}">
-            {% else %}
-                <div class="mira-post-image post-detail-image">
-                    <span>Post image</span>
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                        <img 
+                            src="{{ image.image.url }}" 
+                            class="d-block w-100 mira-post-image post-detail-image" 
+                            alt="{{ post.title }}">
                 </div>
             {% endif %}
         </div>
 
-    </div>
+        {% if post.images.count > 1 %}
+            <button 
+                class="carousel-control-prev" 
+                type="button" 
+                data-bs-target="#postImageCarousel" 
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
 
-    <button 
-        class="carousel-control-prev" 
-        type="button" 
-        data-bs-target="#postImageCarousel" 
-        data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
+            <button 
+                class="carousel-control-next" 
+                type="button" 
+                data-bs-target="#postImageCarousel" 
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        {% endif %}
 
-    <button 
-        class="carousel-control-next" 
-        type="button" 
-        data-bs-target="#postImageCarousel" 
-        data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
+    {% else %}
 
+        {% if post.featured_image %}
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img
+                        src="{{ post.featured_image.url }}"
+                        class="d-block w-100 mira-post-image post-detail-image"
+                        alt="{{ post.title }}">
+                </div>
+            </div>
+        {% else %}
+            <div class="mira-post-image post-detail-image">
+                <span>Post image</span>
+            </div>
+        {% endif %}
+    {% endif %}
 </div>
+
 
     <p class="post-detail-date">
         {{ post.created_at|date:"d M Y" }}
