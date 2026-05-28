@@ -7,7 +7,7 @@ from .forms import CommentForm , PostForm
 # Create your views here.
 def home(request):
     posts= Post.objects.filter(is_published=True)
-    tags = Tag.objects.all()
+    tags = Tag.objects.all().order_by('-id')[:10]
     context = {
         'posts': posts,
         'tags': tags,
@@ -168,7 +168,7 @@ def bookmarked_posts(request):
         is_published=True)
 
     tags = Tag.objects.filter(
-        posts__bookmarked=request.user, posts__is_published=True).distinct()
+        posts__bookmarked=request.user, posts__is_published=True).distinct().order_by('-id')[:10]
 
     context = {
         'posts': posts,
@@ -191,7 +191,7 @@ def my_blog(request):
     tags = Tag.objects.filter(
         posts__author=request.user,
         posts__is_published=True
-    ).distinct()
+    ).distinct().order_by('-id')[:10]
 
     context = {
         'posts': posts,

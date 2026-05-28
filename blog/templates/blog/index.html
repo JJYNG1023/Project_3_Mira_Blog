@@ -1,84 +1,85 @@
-{% extends "base.html" %}
-{% load static %}
-
-{% block content %}
+{% extends "base.html" %} {% load static %} {% block content %}
 
 <!-- filter tags -->
 <section class="topic-filter container-fluid mb-4">
-    <div class="topic-filter-wrapper">
-        <button class="topic-btn active" 
-        data-topic="all" 
-        type="button">All
-        </button>
+  <div class="topic-filter-wrapper">
+    <button class="topic-btn active" data-topic="all" type="button">All</button>
     {% for tag in tags %}
-       <button class="topic-btn" 
-       data-topic="{{ tag.name|slugify }}" 
-       type="button">
-        {{ tag.name }}
-        </button>
+    <button
+      class="topic-btn tag-filter-item"
+      data-topic="{{ tag.name|slugify }}"
+      type="button"
+    >
+      {{ tag.name }}
+    </button>
     {% endfor %}
-    </div>
-    <button 
-            type="button"
-            aria-label="Scroll topic filters">
-            <i class="bi bi-chevron-right"></i>
-        </button>
+  </div>
 </section>
 
 <!-- post feed -->
-<section class="container ">
-     <div class="row">
-
-        {% for post in posts %}
-        <div class="col-6 col-md-4">
-           <a href=" {% url 'post_detail' post.slug %}" 
-                class="mira-post-card" 
-                data-topic="{% for tag in post.tags.all %}{{ tag.name|slugify }} {% endfor %}">
-
-            <!-- to be replaced with post image in the future -->
-            <!-- to be replaced with {% static 'blog/images/your-image-name.jpg' %} -->
-            {% if post.featured_image %}
-            <img 
-                src="{{ post.featured_image.url }}"
-                class="mira-post-image"
-                alt=" {{ post.title }}">
-            {% else %}
-            <div class="mira-post-image">
-                <span>post image</span>
-            </div>
-            {% endif %}
-
-            <div>
-                <!-- to be replaced with post title in the future -->
-                <h2 class="card-title mira-post-title">{{ post.title }}</h2>
-                <!-- to be replaced with post content in the future -->
-                <p class="card-text mira-post-preview">{{ post.content|truncatewords:20 }}</p>
-            </div>
-            </a>
+<section class="container">
+  <div class="row">
+    {% for post in posts %}
+    <div class="col-6 col-md-4">
+      <a
+        href=" {% url 'post_detail' post.slug %}"
+        class="mira-post-card"
+        data-topic="{% for tag in post.tags.all %}{{ tag.name|slugify }} {% endfor %}"
+      >
+        <!-- to be replaced with post image in the future -->
+        <!-- to be replaced with {% static 'blog/images/your-image-name.jpg' %} -->
+        {% if post.featured_image %}
+        <img
+          src="{{ post.featured_image.url }}"
+          class="mira-post-image"
+          alt=" {{ post.title }}"
+        />
+        {% else %}
+        <div class="mira-post-image">
+          <span>post image</span>
         </div>
-        {% empty %}
-        <div class="col-12">
-            <p>No posts available.</p>
-        </div>
-        {% endfor %}
+        {% endif %}
 
-     </div>
+        <div>
+          <!-- to be replaced with post title in the future -->
+          <h2 class="card-title mira-post-title">{{ post.title }}</h2>
+          <!-- to be replaced with post content in the future -->
+          <p class="card-text mira-post-preview">
+            {{ post.content|truncatewords:10 }}
+          </p>
+        </div>
+      </a>
+    </div>
+    {% empty %}
+    <div class="col-12">
+      <p>No posts available.</p>
+    </div>
+    {% endfor %}
+  </div>
 </section>
 
 <section>
-    <nav class="bottom-mobile-nav" aria-label="Mobile bottom navigation">
-        <a href="{% url 'home' %}" class="bottom-nav-item active" aria-label="Home">
-        <i class="bi bi-house"></i></a>
+  <nav class="bottom-mobile-nav" aria-label="Mobile bottom navigation">
+    <a href="{% url 'home' %}" class="bottom-nav-item active" aria-label="Home">
+      <i class="bi bi-house"></i
+    ></a>
     <a href="#" class="bottom-nav-item" aria-label="Notifications">
-        <i class="bi bi-bell"></i></a>
-        <!--href= % url 'profile' % to be replaced with actual profile URL-->
+      <i class="bi bi-bell"></i
+    ></a>
+    <!--href= % url 'profile' % to be replaced with actual profile URL-->
     <a href="#" class="bottom-nav-item" aria-label="Profile">
-        <i class="bi bi-person"></i></a>
-        <!--href=% url 'profile' % to be replaced with actual profile URL-->
-    <a href="#" class="bottom-nav-item create-post-link" aria-label="Create post">
-        <i class="bi bi-plus-square"></i> </a>
-        <!--href=% url 'profile' % to be replaced with actual profile URL-->
-    </nav>
+      <i class="bi bi-person"></i
+    ></a>
+    <!--href=% url 'profile' % to be replaced with actual profile URL-->
+    <a
+      href="#"
+      class="bottom-nav-item create-post-link"
+      aria-label="Create post"
+    >
+      <i class="bi bi-plus-square"></i>
+    </a>
+    <!--href=% url 'profile' % to be replaced with actual profile URL-->
+  </nav>
 </section>
 
 {% endblock %}

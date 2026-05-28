@@ -194,10 +194,11 @@ p {
 
 .topic-filter-wrapper {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 0.35rem;
+    gap: 0.5rem;
     width: 100%;
+    overflow: hidden;
+    flex-wrap: nowrap;
 }
 
 .topic-btn {
@@ -205,6 +206,8 @@ p {
     padding: 0.15rem 0.75rem;
     font-size: var(--font-size-sm);
     line-height: 1.2;
+    flex: 0 0 auto;
+    white-space: nowrap;
 }
 
 .topic-btn.active {
@@ -212,6 +215,10 @@ p {
     color: var(--background-color);
 }
 
+.tag-filter-item.d-none {
+    display: none;
+}
+/* add filter tags*/
 
 /* -----------------------------
    Landing page: post cards
@@ -262,6 +269,7 @@ div.mira-post-image {
     margin: 0;
     line-height: 1.4;
     color: #212529;
+    padding-bottom: 20px;
 }
 
 
@@ -571,6 +579,12 @@ div.mira-post-image {
 ------------------------------ */
 
 @media screen and (min-width: 768px) {
+
+    .tag-filter-item:nth-of-type(n+6) {
+        display: inline-block;
+    }
+    /*filter tags on mobile view : 'n+6' hide the 6th one*/
+
 
     .topic-filter-section,
     .post-feed-section {

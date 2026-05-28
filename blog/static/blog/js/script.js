@@ -132,3 +132,42 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 });
+
+// Responsive tag filter visibility
+document.addEventListener("DOMContentLoaded", function () {
+    const filterWrappers = document.querySelectorAll(".topic-filter-wrapper");
+
+    function updateVisibleTags() {
+        filterWrappers.forEach(function (wrapper) {
+            const tagButtons = wrapper.querySelectorAll(".tag-filter-item");
+
+            // Reset all tags first
+            tagButtons.forEach(function (tag) {
+                tag.classList.remove("d-none");
+            });
+
+            const maxTags = window.innerWidth >= 768 ? 10 : 5;
+            let visibleTagCount = 0;
+
+            tagButtons.forEach(function (tag) {
+                visibleTagCount++;
+
+                if (visibleTagCount > maxTags) {
+                    tag.classList.add("d-none");
+                    return;
+                }
+
+                const wrapperRight = wrapper.getBoundingClientRect().right;
+                const tagRight = tag.getBoundingClientRect().right;
+
+                if (tagRight > wrapperRight) {
+                    tag.classList.add("d-none");
+                }
+            });
+        });
+    }
+
+    updateVisibleTags();
+
+    window.addEventListener("resize", updateVisibleTags);
+});
