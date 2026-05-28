@@ -23,15 +23,15 @@ urlpatterns = [
     path('my-blog/', views.my_blog, name='my_blog'),
     # This line is added to handle the view for displaying posts created by the logged-in user
 
-   # path('search/', views.search, name='search'),
-    # This line is added to handle the search functionality at the /search/ URL
-
     path('create_post/', views.create_post, name='create_post'),
     # This line is added to handle the creation of new blog posts at the /create_post/ URL
 
     path('blog/<slug:slug>/edit/', views.edit_post, name='edit_post'),
-    # this line is added to handle the edit post function/view
+    # This line is added to handle the edit post function/view
 
     path('post-image/<int:image_id>/delete/', views.delete_post_image, name='delete_post_image'),
-    # this line is added to delete existing post images in edit post mode.
+    # This line is added to delete existing post images in edit post mode.
+
+    path('blog/<slug:slug>/delete/', views.delete_post, name='delete_post'),
+    # This line is added to delete existing posts
 ]

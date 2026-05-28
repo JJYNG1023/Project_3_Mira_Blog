@@ -350,3 +350,17 @@ def delete_post_image(request, image_id):
 
     messages.success(request, 'Image has been deleted.')
     return redirect('edit_post', slug=post.slug)
+
+# delete post
+def delete_post(request, slug):
+    if not request.user.is_authenticated:
+        return redirect('account_login')
+
+    post = get_object_or_404(Post, slug=slug, author=request.user)
+
+    if request.method == 'POST':
+        post.delete()
+        messages.success(request, 'Post has been deleted.')
+        return redirect('my_blog')
+
+    return redirect('post_detail', slug=post.slug)
