@@ -112,7 +112,99 @@ The ideology of the user flow circulation is:
 
 
 ### 1.07 Styling
+The visual style of Mira blog is designe to be minimalistic, clean and modern. The aim is to set out a clear page hierarchy for easy to read.
+To do so, I have set up a default :root variable in CSS styling, this variable helps to refine text styles size, font and colours to make both css styple and webpage more unified and clear. 
 
+``` 
+:root {
+    /* Colours */
+    --primary-color: #ffeb33;
+    --secondary-color: #212529;
+
+    --icon-color-default: #fd7b41;
+    --icon-color-interactive: #fd7b41;
+
+    --main-title-color: #000000;
+    --sub-title-color: #000000;
+    --heading-1-color: #070707;
+    --heading-2-color: #090909;
+    --heading-3-color: #080808;
+    --paragraph-color: #000000;
+    --annotation-color: #939393;
+
+    --background-color: #ffffff;
+    --link-color: #0d6efd;
+    --link-hover-color: #0a58ca;
+
+    /* Font sizes */
+    --font-size-xs: 0.7rem;
+    --font-size-sm: 0.8rem;
+    --font-size-base: 0.9rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.1rem;
+    --font-size-xl: 1.35rem;
+    --font-size-xxl: 1.6rem;
+
+    /* Font weights */
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 600;
+
+    /* Border radius */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-pill: 999px;
+}
+
+```
+
+#### Typography
+```  /* Font sizes */
+    --font-size-xs: 0.7rem;
+    --font-size-sm: 0.8rem;
+    --font-size-base: 0.9rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.1rem;
+    --font-size-xl: 1.35rem;
+    --font-size-xxl: 1.6rem;
+
+    /* Font weights */
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 600;
+```
+
+The typography should be simple and readable across all devices.
+In the variable style.css, I have set up a fix variable of font weight and font size to differentiate Title, Heading, Subheadings,Body text and Annotation text. 
+Headings should be bold enough to create clear page hierarchy, while body text should remain easy to read.
+
+#### Colour Scheme
+The planned colour scheme will use a light and minimal design. Neutral colours will help the blog images and post content stand out.
+
+Possible colour approach:
+- Light background with dark text for readability
+- Highlight colour for active buttons, selected tags, and important actions
+- Grey buttons for annotation like edit and reply.
+
+```    /* Colours */
+    --primary-color: #ffeb33;
+    --secondary-color: #212529;
+
+    --icon-color-default: #fd7b41;
+    --icon-color-interactive: #fd7b41;
+
+    --main-title-color: #000000;
+    --sub-title-color: #000000;
+    --heading-1-color: #070707;
+    --heading-2-color: #090909;
+    --heading-3-color: #080808;
+    --paragraph-color: #000000;
+    --annotation-color: #939393;
+
+    --background-color: #ffffff;
+    --link-color: #0d6efd;
+    --link-hover-color: #0a58ca; 
+```
 
 1.08 Surface Plane_Wireframes
 2. Features
