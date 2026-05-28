@@ -340,7 +340,7 @@ div.mira-post-image {
 
 .carousel-control-prev,
 .carousel-control-next {
-    display: none;
+    filter: 1;
 }
 
 .post-detail-title {
@@ -449,7 +449,6 @@ div.mira-post-image {
 }
 
 /* Post detail bottom action bar */
-
 .post-bottom-action-bar {
     position: fixed;
     bottom: 0;
@@ -514,12 +513,22 @@ div.mira-post-image {
     border: 1px solid var(--secondary-color);
 }
 
+/* -----------------------------
+   Edit post existing images 
+------------------------------ */
+.edit-image-delete-btn {
+    width: 1.35rem;
+    height: 1.35rem;
+    line-height: 1;
+}
+
 /* Style for the "Create new tag" item in the tag selection dropdown */
 .create-tag-item {
     color: var(--secondary-color);
     text-decoration: underline;
     font-size: var(--font-size-base);
 }
+
 
 /* -----------------------------
    Bottom mobile navigation

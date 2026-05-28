@@ -318,5 +318,35 @@ def edit_post(request, slug):
         'post': post,
         'post_form': post_form,
         'existing_tags': existing_tags,
+        'existing_images': post.images.all(),
     }
     return render(request, 'blog/edit_post.html', context)
+
+# delete image from existing post
+def delete_post_image(request, image_id):
+    if not request.user.is_authenticated:
+        return redirect('account_login')
+
+    image = get_object_or_404(
+        PostImage,
+        id=image_id,
+        post__author=request.user
+    )
+
+    post = image.post
+
+    # Find another image to use as featured image if needed
+    next_image = post.images.exclude(id=image.id).first()
+
+    if post.featured_image and post.featured_image.name == image.image.name:
+        if next_image:
+            post.featured_image = next_image.image
+        else:
+            post.featured_image = None
+
+        post.save(update_fields=['featured_image'])
+
+    image.delete()
+
+    messages.success(request, 'Image has been deleted.')
+    return redirect('edit_post', slug=post.slug)

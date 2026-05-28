@@ -22,6 +22,40 @@
 </header>
 
 <section class="container post-detail-section">
+  <!-- Keep existing image thumbnails when edit the post and add a delete button-->
+  {% if existing_images %}
+  <div class="mb-4">
+    <label class="form-label fw-bold">Current Images</label>
+
+    <div class="d-flex flex-wrap gap-2">
+      {% for image in existing_images %}
+      <div class="position-relative">
+        <img
+          src="{{ image.image.url }}"
+          class="image-preview-thumb"
+          alt="{{ post.title }}"
+        />
+
+        <form
+          method="post"
+          action="{% url 'delete_post_image' image.id %}"
+          class="position-absolute top-0 start-100 translate-middle"
+        >
+          {% csrf_token %}
+          <button
+            type="submit"
+            class="btn btn-light btn-sm border rounded-circle p-0 edit-image-delete-btn"
+            aria-label="Delete image"
+          >
+            <i class="bi bi-x"></i>
+          </button>
+        </form>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
   <form method="post" id="createPostForm" enctype="multipart/form-data">
     {% csrf_token %} {{ post_form.non_field_errors }}
     <!--area for uploading images-->

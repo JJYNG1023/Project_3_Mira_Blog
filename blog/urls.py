@@ -30,9 +30,8 @@ urlpatterns = [
     # This line is added to handle the creation of new blog posts at the /create_post/ URL
 
     path('blog/<slug:slug>/edit/', views.edit_post, name='edit_post'),
-   # path('profile/', views.profile, name='profile'),
-    # This line is added to handle the user profile view at the /profile/ URL
+    # this line is added to handle the edit post function/view
 
-   # path('notifications/', views.notifications, name='notifications'),
-    # This line is added to handle the notifications view at the /notifications/ URL
+    path('post-image/<int:image_id>/delete/', views.delete_post_image, name='delete_post_image'),
+    # this line is added to delete existing post images in edit post mode.
 ]
