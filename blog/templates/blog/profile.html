@@ -8,10 +8,10 @@
 
 <header>
   <nav class="navbar bg-light shadow-sm fixed-top">
-    <div class="container-fluid position-relative justify-content-center py-3">
+    <div class="container-fluid position-relative justify-content-center py-2">
       <a
         href="{% url 'home' %}"
-        class="position-absolute start-0 top-50 translate-middle-y ms-3 text-dark fs-4 text-decoration-none"
+        class="position-absolute start-0 top-50 translate-middle-y ms-3 text-dark fs-4"
         aria-label="Return to home"
       >
         <i class="bi bi-chevron-left"></i>
@@ -24,7 +24,7 @@
         class="position-absolute end-0 top-50 translate-middle-y me-3 btn border-0 fs-4"
         aria-label="Share profile"
       >
-        <i class="bi bi-share"></i>
+        <i class="bi bi-arrow-up-right-square"></i>
       </button>
     </div>
   </nav>
@@ -41,9 +41,9 @@
     <div>
       <h2 class="mb-2">{{ user.username }}</h2>
 
-      <p class="mira-post-preview mb-1">No. Blogs: {{ user_posts_count }}</p>
-      <p class="mira-post-preview mb-1">No. Saved: {{ saved_posts_count }}</p>
-      <p class="mira-post-preview mb-0">No. Likes: {{ liked_posts_count }}</p>
+      <p class="mb-0">Blogs: {{ user_posts_count }}</p>
+      <p class="mb-0">Likes: {{ liked_posts_count }}</p>
+      <p class="mb-0">bookmarked: {{ bookmarked_posts_count }}</p>
     </div>
   </div>
 
@@ -80,11 +80,11 @@
           {% if post.featured_image %}
             <img
               src="{{ post.featured_image.url }}"
-              class="mira-post-image profile-post-image"
+              class="mira-post-image"
               alt="{{ post.title }}"
             >
           {% else %}
-            <div class="mira-post-image profile-post-image">
+            <div class="mira-post-image">
               <span>Post image</span>
             </div>
           {% endif %}
@@ -103,6 +103,31 @@
     {% endfor %}
   </div>
 
+</section>
+
+<!--bottom nav bar duplicated from index.html-->
+<section>
+  <nav class="bottom-mobile-nav" aria-label="Mobile bottom navigation">
+    <a href="{% url 'home' %}" class="bottom-nav-item" aria-label="Home">
+      <i class="bi bi-house"></i
+    ></a>
+    <a href="#" class="bottom-nav-item" aria-label="Notifications">
+      <i class="bi bi-bell"></i
+    ></a>
+    <!--href= % url 'profile' % to be replaced with actual profile URL-->
+    <a href="{% url 'user_profile' %}" class="bottom-nav-item active" aria-label="Profile">
+      <i class="bi bi-person fs-1"></i
+    ></a>
+    <!--href=% url 'profile' % to be replaced with actual profile URL-->
+    <a
+      href="{% url 'create_post' %}"
+      class="bottom-nav-item create-post-link"
+      aria-label="Create post"
+    >
+      <i class="bi bi-plus-square"></i>
+    </a>
+    <!--href=% url 'profile' % to be replaced with actual profile URL-->
+  </nav>
 </section>
 
 {% endblock %}
