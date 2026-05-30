@@ -34,4 +34,7 @@ urlpatterns = [
 
     path('blog/<slug:slug>/delete/', views.delete_post, name='delete_post'),
     # This line is added to delete existing posts
+
+    path('search/', views.search_posts, name='search_posts'),
+    # This line is added to search posts
 ]

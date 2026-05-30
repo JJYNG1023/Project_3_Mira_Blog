@@ -272,6 +272,23 @@ div.mira-post-image {
     padding-bottom: 20px;
 }
 
+/* -----------------------------
+   Search page
+------------------------------ */
+
+.search-navbar {
+    max-width: 720px;
+    margin: 0 auto;
+    gap: 1rem;
+}
+
+.search-page-form {
+    flex: 1;
+}
+
+.search-page-section {
+    padding-top: 1.5rem;
+}
 
 /* -----------------------------
    Post detail page

@@ -364,3 +364,31 @@ def delete_post(request, slug):
         return redirect('my_blog')
 
     return redirect('post_detail', slug=post.slug)
+
+
+#creating a view for search bar 
+def search_posts(request):
+    query=request.GET.get('q','')
+    if query:
+        posts = Post.objects.filter(
+            is_published=True,
+            title__icontains=query
+        ) | Post.objects.filter(
+            is_published=True,
+            content__icontains=query
+        ) | Post.objects.filter(
+            is_published=True,
+            tags__name__icontains=query
+        )
+    #let user to search by title, content and tags
+
+        posts = posts.distinct()
+    else:
+        posts = Post.objects.filter(is_published=True).order_by('-created_at')[:5]
+
+    context = {
+        'query': query,
+        'posts': posts,
+    }
+
+    return render(request, 'blog/search.html', context)

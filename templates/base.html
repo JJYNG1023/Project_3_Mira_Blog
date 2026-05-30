@@ -63,12 +63,14 @@
             </div>
                 <!-- Search form -->
             <form class="mira-search-form" role="search" method="GET" action="#">
-                <input 
-                    class="form-control form-control-sm mira-search-input" 
-                    type="search" 
-                    name="q"
-                    placeholder="Search" 
-                    aria-label="Search">
+                <a href="{% url 'search_posts' %}" class="mira-search-form text-decoration-none">
+                    <input
+                        class="form-control mira-search-input"
+                        type="text"
+                        placeholder="Search"
+                        readonly
+                    >
+                </a>
             </form>
 
             </div>
