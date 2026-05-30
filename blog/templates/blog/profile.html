@@ -34,9 +34,36 @@
 
   <!-- Profile header -->
   <div class="d-flex align-items-center gap-4 mb-4">
-    <div class="profile-picture-placeholder">
-      <i class="bi bi-person"></i>
-    </div>
+    <form method="post" enctype="multipart/form-data" class="profile-image-form">
+      {% csrf_token %}
+
+      <label for="profileImageInput" class="profile-picture-wrapper">
+        {% if profile.profile_image %}
+          <img
+            src="{{ profile.profile_image.url }}"
+            class="profile-picture-img"
+            alt="{{ user.username }} profile picture"
+          >
+        {% else %}
+          <div class="profile-picture-placeholder">
+            <i class="bi bi-person"></i>
+          </div>
+        {% endif %}
+
+        <span class="profile-picture-edit-icon">
+          <i class="bi bi-pencil"></i>
+        </span>
+      </label>
+
+      <input
+        type="file"
+        id="profileImageInput"
+        name="profile_image"
+        accept="image/*"
+        class="d-none"
+        onchange="this.form.submit()"
+      >
+    </form>
 
     <div>
       <h2 class="mb-2">{{ user.username }}</h2>

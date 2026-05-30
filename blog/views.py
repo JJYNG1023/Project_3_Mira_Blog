@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404 , redirect
 from django.urls import reverse
 from django.contrib import messages
-from .models import Post, Tag , Comment, PostImage
+from .models import Post, Tag , Comment, PostImage , UserProfile
 from .forms import CommentForm , PostForm , CollaborationForm
 
 # Create your views here.
@@ -421,6 +421,18 @@ def user_profile(request):
     if not request.user.is_authenticated:
         return redirect('account_login')
     
+    # if User is authenticated, the user is able to add profile image
+    profile, created = UserProfile.objects.get_or_create(user=request.user)
+   
+    if request.method == 'POST':
+        profile_image = request.FILES.get('profile_image')
+
+        if profile_image:
+            profile.profile_image = profile_image
+            profile.save()
+            messages.success(request, 'Profile picture has been updated.')
+            return redirect('user_profile')
+
     active_tab = request.GET.get('tab', 'blogs')
 
     # Filter bookmarked/saved posts
@@ -437,7 +449,7 @@ def user_profile(request):
             is_published=True
         )
     
-    # Filter user's own blog posts
+    # if the earlier condition is not true, then show the current user’s published blog posts
     else:
         posts = Post.objects.filter(
             author=request.user,
@@ -469,6 +481,7 @@ def user_profile(request):
         'user_posts_count': user_posts_count,
         'bookmarked_posts_count': bookmarked_posts_count,
         'liked_posts_count': liked_posts_count,
+        'profile':profile,
     }
 
     return render(request, 'blog/profile.html', context)
