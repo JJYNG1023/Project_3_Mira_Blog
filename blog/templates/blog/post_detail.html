@@ -15,16 +15,16 @@
         <!-- to be replaced with post author username in the future -->
         <div class="post-author-id">
           <div class="post-author-placeholder overflow-hidden">
-              {% if post.author.profile.profile_image %}
-                <img
-                  src="{{ post.author.profile.profile_image.url }}"
-                  class="w-100 h-100 object-fit-cover"
-                  alt="{{ post.author.username }} profile picture"
-                >
-              {% else %}
-                <i class="bi bi-person"></i>
-              {% endif %}
-            </div>
+            {% if post.author.profile.profile_image %}
+              <img
+                src="{{ post.author.profile.profile_image.url }}"
+                class="w-100 h-100 object-fit-cover"
+                alt="{{ post.author.username }} profile picture"
+              >
+            {% else %}
+              <i class="bi bi-person"></i>
+            {% endif %}
+          </div>
 
           <span class="mira-nav-link mira-active">
             {{ post.author.username }}
@@ -33,9 +33,25 @@
         </div>
       </div>
 
-      <button type="button" class="btn btn-outline-dark btn-sm post-follow-btn">
+          {% if user.is_authenticated and post.author != user %}
+      <form method="post" action="{% url 'follow_user' post.author.username %}" class="m-0">
+        {% csrf_token %}
+
+        {% if post.author.profile in user.profile.following.all %}
+          <button type="submit" class="btn btn-dark btn-sm post-follow-btn">
+            Unfollow
+          </button>
+        {% else %}
+          <button type="submit" class="btn btn-outline-dark btn-sm post-follow-btn">
+            Follow
+          </button>
+        {% endif %}
+      </form>
+    {% elif not user.is_authenticated %}
+      <a href="{% url 'account_login' %}" class="btn btn-outline-dark btn-sm post-follow-btn">
         Follow
-      </button>
+      </a>
+    {% endif %}
 
       <a href="#" class="post-share-btn" aria-label="Share post">
         <i class="bi bi-arrow-up-right-square"></i>
@@ -165,8 +181,16 @@
 
   {% for comment in comments %}
   <div class="comment-item" id="comment-{{ comment.id }}">
-    <div class="post-author-placeholder">
-      <i class="bi bi-person"></i>
+    <div class="post-author-placeholder overflow-hidden">
+      {% if comment.author.profile.profile_image %}
+        <img
+          src="{{ comment.author.profile.profile_image.url }}"
+          class="w-100 h-100 object-fit-cover"
+          alt="{{ comment.author.username }} profile picture"
+          >
+      {% else %}
+          <i class="bi bi-person"></i>
+      {% endif %}
     </div>
 
     <div class="comment-content">
@@ -268,8 +292,16 @@
       <div class="comment-replies mt-2">
         {% for reply in comment.replies.all %} {% if reply.is_approved %}
         <div class="comment-item reply-item" id="comment-{{ reply.id }}">
-          <div class="post-author-placeholder">
-            <i class="bi bi-person"></i>
+          <div class="post-author-placeholder overflow-hidden">
+            {% if reply.author.profile.profile_image %}
+              <img
+                src="{{ reply.author.profile.profile_image.url }}"
+                class="w-100 h-100 object-fit-cover"
+                alt="{{ reply.author.username }} profile picture"
+                >
+            {% else %}
+                <i class="bi bi-person"></i>
+            {% endif %}
           </div>
 
           <div class="comment-content">

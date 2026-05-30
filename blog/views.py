@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.contrib import messages
 from .models import Post, Tag , Comment, PostImage , UserProfile
 from .forms import CommentForm , PostForm , CollaborationForm
+from django.contrib.auth.models import User
 
 # Create your views here.
 def home(request):
@@ -424,6 +425,7 @@ def user_profile(request):
     # if User is authenticated, the user is able to add profile image
     profile, created = UserProfile.objects.get_or_create(user=request.user)
    
+    # Allow user to upload profile image
     if request.method == 'POST':
         profile_image = request.FILES.get('profile_image')
 
@@ -435,53 +437,80 @@ def user_profile(request):
 
     active_tab = request.GET.get('tab', 'blogs')
 
-    # Filter bookmarked/saved posts
-    if active_tab == 'bookmarked':
-        posts = Post.objects.filter(
+    # show users own posts
+    if active_tab =='blogs':
+        posts =Post.objects.filter(
+            author=request.user,
+            is_published=True
+        )
+    # show bookmarked posts    
+    elif active_tab =='bookmarked':
+        posts= Post.objects.filter(
             bookmarked=request.user,
             is_published=True
         )
-
-    # Filter liked posts
+    # show likes posts
     elif active_tab == 'likes':
         posts = Post.objects.filter(
             likes=request.user,
             is_published=True
         )
-    
-    # if the earlier condition is not true, then show the current user’s published blog posts
+
     else:
+    # if the earlier condition is not true, then show the current user’s published blog posts
         posts = Post.objects.filter(
             author=request.user,
             is_published=True
-        )
+            )
         active_tab = 'blogs'
-
-    # Count user's own posts
+    
+    # Filter bookmarked/saved posts
     user_posts_count = Post.objects.filter(
         author=request.user,
         is_published=True
-    ).count()
+        ).count()
 
-    # Count bookmarked/saved posts
-    bookmarked_posts_count = Post.objects.filter(
-        bookmarked=request.user,
-        is_published=True
-    ).count()
+    # Count following users
+    following_count = profile.following.count()
 
-    # Count liked posts
-    liked_posts_count = Post.objects.filter(
-        likes=request.user,
-        is_published=True
-    ).count()
+    # Count followers
+    followers_count = profile.followers.count()
     
     context = {
         'posts': posts,
         'active_tab': active_tab,
         'user_posts_count': user_posts_count,
-        'bookmarked_posts_count': bookmarked_posts_count,
-        'liked_posts_count': liked_posts_count,
+        'following_count': following_count,
+        'followers_count': followers_count,
         'profile':profile,
     }
 
     return render(request, 'blog/profile.html', context)
+
+# Follow and unfollow another user
+def follow_user(request, username):
+    if not request.user.is_authenticated:
+        return redirect('account_login')
+
+    target_user = get_object_or_404(User, username=username)
+
+    if target_user == request.user:
+        messages.error(request, 'You cannot follow yourself.')
+        return redirect('user_profile')
+
+    current_profile, created = UserProfile.objects.get_or_create(
+        user=request.user
+    )
+
+    target_profile, created = UserProfile.objects.get_or_create(
+        user=target_user
+    )
+
+    if target_profile in current_profile.following.all():
+        current_profile.following.remove(target_profile)
+        messages.success(request, f'You unfollowed {target_user.username}.')
+    else:
+        current_profile.following.add(target_profile)
+        messages.success(request, f'You followed {target_user.username}.')
+
+    return redirect(request.META.get('HTTP_REFERER', 'home'))

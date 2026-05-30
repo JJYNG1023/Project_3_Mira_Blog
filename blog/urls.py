@@ -44,4 +44,5 @@ urlpatterns = [
     path('profile/', views.user_profile, name='user_profile'),
     # This line is added for user profile page
 
+    path('follow/<str:username>/', views.follow_user, name='follow_user'),
 ]
