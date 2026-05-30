@@ -171,3 +171,64 @@ document.addEventListener("DOMContentLoaded", function () {
 
     window.addEventListener("resize", updateVisibleTags);
 });
+
+// Responsive recent search history/filter
+document.addEventListener("DOMContentLoaded", function () {
+    const recentSearchWrapper = document.getElementById("recentSearchWrapper");
+    const clearSearchHistory = document.getElementById("clearSearchHistory");
+    const currentSearchQueryElement = document.getElementById("current-search-query");
+
+    if (!recentSearchWrapper) {
+        return;
+    }
+let recentSearches = JSON.parse(localStorage.getItem("recentSearches")) || [];
+
+    if (currentSearchQueryElement) {
+        const currentSearchQuery = JSON.parse(currentSearchQueryElement.textContent);
+
+        if (currentSearchQuery) {
+            recentSearches = recentSearches.filter(function (search) {
+                return search.toLowerCase() !== currentSearchQuery.toLowerCase();
+            });
+
+            recentSearches.unshift(currentSearchQuery);
+            recentSearches = recentSearches.slice(0, 6);
+
+            localStorage.setItem("recentSearches", JSON.stringify(recentSearches));
+        }
+    }
+    // store recent search words
+
+    // render recent search words on web page
+    function renderRecentSearches() {
+        recentSearchWrapper.innerHTML = "";
+
+        if (recentSearches.length === 0) {
+            recentSearchWrapper.innerHTML = `
+                <p class="mira-post-preview text-muted mb-0">
+                    No recent searches yet.
+                </p>
+            `;
+            return;
+        }
+
+        recentSearches.forEach(function (search) {
+            const searchLink = document.createElement("a");
+            searchLink.href = "/search/?q=" + encodeURIComponent(search);
+            searchLink.className = "btn btn-outline-dark btn-sm rounded-pill px-4";
+            searchLink.textContent = search;
+
+            recentSearchWrapper.appendChild(searchLink);
+        });
+    }
+    // delete the recent search history 
+    if (clearSearchHistory) {
+        clearSearchHistory.addEventListener("click", function () {
+            localStorage.removeItem("recentSearches");
+            recentSearches = [];
+            renderRecentSearches();
+        });
+    }
+
+    renderRecentSearches();
+});

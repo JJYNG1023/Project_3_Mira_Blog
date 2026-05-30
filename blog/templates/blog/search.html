@@ -75,5 +75,5 @@
     {% endfor %}
   </div>
 </section>
-
+{{ query|json_script:"current-search-query" }}
 {% endblock %}
