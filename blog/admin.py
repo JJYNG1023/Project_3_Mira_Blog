@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Tag
+from .models import Post, Tag , CollaborationMessage
 # Register your models here.
 
 @admin.register(Tag)
@@ -14,3 +14,9 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ('title', 'content')
     prepopulated_fields = {'slug': ('title',)}
     filter_horizontal = ('tags',)
+
+@admin.register(CollaborationMessage)
+class CollaborationMessageAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'created_at', 'is_read')
+    list_filter = ('is_read', 'created_at')
+    search_fields = ('name', 'email', 'message')

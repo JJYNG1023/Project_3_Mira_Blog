@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block content %}
+
+<header>
+  <nav class="navbar bg-light shadow-sm fixed-top">
+    <div class="container-fluid position-relative justify-content-center py-3">
+      <a
+        href="{% url 'home' %}"
+        class="position-absolute start-0 top-50 translate-middle-y ms-3 text-dark fs-4 text-decoration-none"
+        aria-label="Return to home"
+      >
+        <i class="bi bi-chevron-left"></i>
+      </a>
+
+      <h1 class="mb-0">About Us</h1>
+    </div>
+  </nav>
+</header>
+
+<section class="container post-detail-section">
+
+  <!-- About us information -->
+  <div class="mb-5">
+    <h2 class="mb-3">About us</h2>
+
+    <div>
+      <p class="mb-0">
+        Mira Blog is a community-focused blogging platform for sharing local
+        stories, discoveries, experiences, and everyday moments. We aim to
+        create a welcoming space where people can explore posts, connect
+        through shared interests, and discover places, activities, and ideas
+        through personal voices.
+      </p>
+    </div>
+  </div>
+
+  <!-- Collaboration form -->
+  <div class="mb-5">
+    <h2 class="mb-4">Collaborate with us</h2>
+
+    <form method="post">
+      {% csrf_token %}
+
+      {{ collaboration_form.non_field_errors }}
+
+      <div class="mb-3">
+        <label for="{{ collaboration_form.name.id_for_label }}" class="form-label">
+          Name
+        </label>
+        {{ collaboration_form.name }}
+        {{ collaboration_form.name.errors }}
+      </div>
+
+      <div class="mb-3">
+        <label for="{{ collaboration_form.email.id_for_label }}" class="form-label">
+          User Email
+        </label>
+        {{ collaboration_form.email }}
+        {{ collaboration_form.email.errors }}
+      </div>
+
+      <div class="mb-4">
+        <label for="{{ collaboration_form.message.id_for_label }}" class="form-label">
+          Message
+        </label>
+        {{ collaboration_form.message }}
+        {{ collaboration_form.message.errors }}
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-dark rounded-pill px-5">
+          Send
+        </button>
+      </div>
+    </form>
+  </div>
+
+</section>
+
+{% endblock %}

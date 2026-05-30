@@ -118,10 +118,9 @@
 
                 <hr>
 
-                <a href="#" class="nav-link px-0 text-dark">Collaboration</a>
-                <a href="#" class="nav-link px-0 text-dark">About Us</a>
-                <a href="#" class="nav-link px-0 text-dark">Contact</a>
-
+                <a href="{% url 'about_us' %}" class="nav-link px-0 text-dark">Collaboration</a>
+                <a href="{% url 'about_us' %}" class="nav-link px-0 text-dark">About Us</a>
+                <a href="{% url 'about_us' %}" class="nav-link px-0 text-dark">Contact</a>
 
             {% else %}
                 <a href="{% url 'account_login' %}" class="nav-link px-0 text-dark">Log in</a>

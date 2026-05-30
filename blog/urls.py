@@ -37,4 +37,7 @@ urlpatterns = [
 
     path('search/', views.search_posts, name='search_posts'),
     # This line is added to search posts
+
+    path('about/', views.about_us, name='about_us'),
+    # This line is added to create an about us page and display collaboration form
 ]

@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404 , redirect
 from django.urls import reverse
 from django.contrib import messages
 from .models import Post, Tag , Comment, PostImage
-from .forms import CommentForm , PostForm
+from .forms import CommentForm , PostForm , CollaborationForm
 
 # Create your views here.
 def home(request):
@@ -392,3 +392,25 @@ def search_posts(request):
     }
 
     return render(request, 'blog/search.html', context)
+
+
+# About us page and collaboration form
+def about_us(request):
+    if request.method == 'POST':
+        collaboration_form = CollaborationForm(request.POST)
+
+        if collaboration_form.is_valid():
+            collaboration_form.save()
+            messages.success(request, 'Thank you for your message. We will get back to you soon.')
+            return redirect('about_us')
+        else:
+            messages.error(request, 'Please check the form and try again.')
+
+    else:
+        collaboration_form = CollaborationForm()
+
+    context = {
+        'collaboration_form': collaboration_form,
+    }
+
+    return render(request, 'blog/about_us.html', context)

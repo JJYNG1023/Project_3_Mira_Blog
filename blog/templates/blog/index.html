@@ -26,8 +26,6 @@
         class="mira-post-card"
         data-topic="{% for tag in post.tags.all %}{{ tag.name|slugify }} {% endfor %}"
       >
-        <!-- to be replaced with post image in the future -->
-        <!-- to be replaced with {% static 'blog/images/your-image-name.jpg' %} -->
         {% if post.featured_image %}
         <img
           src="{{ post.featured_image.url }}"

@@ -46,7 +46,7 @@ class Post(models.Model):
     
 
 
-
+# This model is created to handle interactive comments features and replys in the post blog page
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
@@ -86,3 +86,17 @@ class PostImage(models.Model):
 
     def __str__(self):
         return f'Image for {self.post.title}'
+    
+# Collaboration message from About Us page
+class CollaborationMessage(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_read = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return f'Collaboration message from {self.name}'
