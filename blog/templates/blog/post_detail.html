@@ -14,10 +14,17 @@
 
         <!-- to be replaced with post author username in the future -->
         <div class="post-author-id">
-          <div class="post-author-placeholder">
-            <i class="bi bi-person"></i>
-            <!-- post author place holder and links to be replaced in the future -->
-          </div>
+          <div class="post-author-placeholder overflow-hidden">
+              {% if post.author.profile.profile_image %}
+                <img
+                  src="{{ post.author.profile.profile_image.url }}"
+                  class="w-100 h-100 object-fit-cover"
+                  alt="{{ post.author.username }} profile picture"
+                >
+              {% else %}
+                <i class="bi bi-person"></i>
+              {% endif %}
+            </div>
 
           <span class="mira-nav-link mira-active">
             {{ post.author.username }}
