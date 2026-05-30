@@ -218,7 +218,7 @@ p {
 .tag-filter-item.d-none {
     display: none;
 }
-/* add filter tags*/
+
 
 /* -----------------------------
    Landing page: post cards
@@ -556,7 +556,38 @@ div.mira-post-image {
 
 
 /* -----------------------------
-   Bottom mobile navigation
+   User profile
+------------------------------ */
+.profile-page-section {
+    padding-top: 1.5rem;
+}
+
+.profile-picture-placeholder {
+    width: 110px;
+    height: 110px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    background-color: var(--background-color);
+    flex: 0 0 auto;
+}
+
+.profile-tab-link {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-size: var(--font-size-base);
+    padding: 0.65rem 0.5rem;
+}
+
+.profile-tab-link.active {
+    font-weight: var(--font-weight-bold);
+}
+
+/* -----------------------------
+   Bottom navigation
 ------------------------------ */
 
 .bottom-mobile-nav {
@@ -592,15 +623,21 @@ div.mira-post-image {
 
 
 /* -----------------------------
-   Tablet view
+   Mobile to Tablet view
 ------------------------------ */
 
 @media screen and (min-width: 768px) {
 
+    /* top nav bar & search bar & filter bar*/
+    .mira-search-form {
+        max-width: 350px;
+        margin-left: auto;
+    }
+
+    /*filter tags on mobile view : 'n+6' hide the 6th one*/
     .tag-filter-item:nth-of-type(n+6) {
         display: inline-block;
     }
-    /*filter tags on mobile view : 'n+6' hide the 6th one*/
 
 
     .topic-filter-section,
@@ -621,15 +658,12 @@ div.mira-post-image {
         gap: 1.25rem;
     }
 
-    .mira-search-form {
-        max-width: 350px;
-        margin-left: auto;
-    }
-
+    /* blog_post image*/
     .post-detail-image {
         height: 500px;
     }
 
+    /* botton nav bar */
     .post-bottom-action-bar {
         max-width: 720px;
         left: 50%;

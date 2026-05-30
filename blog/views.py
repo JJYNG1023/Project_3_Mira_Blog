@@ -424,14 +424,14 @@ def user_profile(request):
     active_tab = request.GET.get('tab', 'blogs')
 
     # Filter bookmarked/saved posts
-    if active_tab == 'saved':
+    if active_tab == 'bookmarked':
         posts = Post.objects.filter(
             bookmarked=request.user,
             is_published=True
         )
 
     # Filter liked posts
-    elif active_tab == 'bookmarked':
+    elif active_tab == 'likes':
         posts = Post.objects.filter(
             likes=request.user,
             is_published=True
