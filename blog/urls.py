@@ -40,4 +40,8 @@ urlpatterns = [
 
     path('about/', views.about_us, name='about_us'),
     # This line is added to create an about us page and display collaboration form
+
+    path('profile/', views.user_profile, name='user_profile'),
+    # This line is added for user profile page
+
 ]

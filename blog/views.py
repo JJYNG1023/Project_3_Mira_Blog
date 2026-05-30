@@ -414,3 +414,61 @@ def about_us(request):
     }
 
     return render(request, 'blog/about_us.html', context)
+
+
+# User profile page
+def user_profile(request):
+    if not request.user.is_authenticated:
+        return redirect('account_login')
+    
+    active_tab = request.GET.get('tab', 'blogs')
+
+    # Filter bookmarked/saved posts
+    if active_tab == 'saved':
+        posts = Post.objects.filter(
+            bookmarked=request.user,
+            is_published=True
+        )
+
+    # Filter liked posts
+    elif active_tab == 'bookmarked':
+        posts = Post.objects.filter(
+            likes=request.user,
+            is_published=True
+        )
+    
+    # Filter user's own blog posts
+    else:
+        posts = Post.objects.filter(
+            author=request.user,
+            is_published=True
+        )
+        active_tab = 'blogs'
+
+    # Count user's own posts
+    user_posts_count = Post.objects.filter(
+        author=request.user,
+        is_published=True
+    ).count()
+
+    # Count bookmarked/saved posts
+    bookmarked_posts_count = Post.objects.filter(
+        bookmarked=request.user,
+        is_published=True
+    ).count()
+
+    # Count liked posts
+    liked_posts_count = Post.objects.filter(
+        likes=request.user,
+        is_published=True
+    ).count()
+    
+    context = {
+        'posts': posts,
+        'active_tab': active_tab,
+        'user_posts_count': user_posts_count,
+        'bookmarked_posts_count': bookmarked_posts_count,
+        'liked_posts_count': liked_posts_count,
+    }
+
+    return render(request, 'blog/profile.html', context)

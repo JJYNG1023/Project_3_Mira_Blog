@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block content %}
+
+<header>
+  <nav class="navbar bg-light shadow-sm fixed-top">
+    <div class="container-fluid position-relative justify-content-center py-3">
+      <a
+        href="{% url 'home' %}"
+        class="position-absolute start-0 top-50 translate-middle-y ms-3 text-dark fs-4 text-decoration-none"
+        aria-label="Return to home"
+      >
+        <i class="bi bi-chevron-left"></i>
+      </a>
+
+      <h1 class="mb-0">My Profile</h1>
+
+      <button
+        type="button"
+        class="position-absolute end-0 top-50 translate-middle-y me-3 btn border-0 fs-4"
+        aria-label="Share profile"
+      >
+        <i class="bi bi-share"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<section class="container post-detail-section profile-page-section">
+
+  <!-- Profile header -->
+  <div class="d-flex align-items-center gap-4 mb-4">
+    <div class="profile-picture-placeholder">
+      <i class="bi bi-person"></i>
+    </div>
+
+    <div>
+      <h2 class="mb-2">{{ user.username }}</h2>
+
+      <p class="mira-post-preview mb-1">No. Blogs: {{ user_posts_count }}</p>
+      <p class="mira-post-preview mb-1">No. Saved: {{ saved_posts_count }}</p>
+      <p class="mira-post-preview mb-0">No. Likes: {{ liked_posts_count }}</p>
+    </div>
+  </div>
+
+  <!-- Profile tabs -->
+  <div class="d-flex justify-content-around border-top border-bottom border-dark mb-3">
+    <a
+      href="{% url 'user_profile' %}?tab=blogs"
+      class="profile-tab-link {% if active_tab == 'blogs' %}active{% endif %}"
+    >
+      Blogs
+    </a>
+
+    <a
+      href="{% url 'user_profile' %}?tab=saved"
+      class="profile-tab-link {% if active_tab == 'saved' %}active{% endif %}"
+    >
+      Bookmarked
+    </a>
+
+    <a
+      href="{% url 'user_profile' %}?tab=likes"
+      class="profile-tab-link {% if active_tab == 'likes' %}active{% endif %}"
+    >
+      Likes
+    </a>
+  </div>
+
+  <!-- Post grid using your existing card styles -->
+  <div class="row g-3 pb-5">
+    {% for post in posts %}
+      <div class="col-6">
+        <a href="{% url 'post_detail' post.slug %}" class="mira-post-card">
+
+          {% if post.featured_image %}
+            <img
+              src="{{ post.featured_image.url }}"
+              class="mira-post-image profile-post-image"
+              alt="{{ post.title }}"
+            >
+          {% else %}
+            <div class="mira-post-image profile-post-image">
+              <span>Post image</span>
+            </div>
+          {% endif %}
+
+          <h2 class="mira-post-title">
+            {{ post.title }}
+          </h2>
+
+          <p class="mira-post-preview">
+            {{ post.content|truncatewords:8 }}
+          </p>
+        </a>
+      </div>
+    {% empty %}
+      <p class="mira-post-preview">No posts to show.</p>
+    {% endfor %}
+  </div>
+
+</section>
+
+{% endblock %}
