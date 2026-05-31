@@ -28,17 +28,19 @@
 <body>
 
 <!-- Desktop sidebar navigation -->
+{% with current_url=request.resolver_match.url_name %}
 <aside class="desktop-sidebar d-none d-lg-flex flex-column">
     <nav class="nav flex-column gap-2">
-      {% if user.is_authenticated %}
-                <h1>Mira Blog</h1>
+      {% if user.is_authenticated %}    
+                <h1 class="mira-logo">Mira Blog</h1>
                 <span class="nav-link px-0 text-dark fw-bold">
                     Hi, {{ user.username }}
                 </span>
-                <a href="{% url 'my_blog' %}" class="nav-link px-0 text-muted">My Blog</a>
+                <a href="{% url 'home' %}" class="nav-link px-0 text-muted {% if current_url == 'home' %}desktop-nav-active{% else %}text-dark{% endif %}">Home</a>
+                <a href="{% url 'my_blog' %}" class="nav-link px-0 text-muted {% if current_url == 'my_blog' %}desktop-nav-active{% else %}text-dark{% endif %}">My Blog</a>
                 <a href="#" class="nav-link px-0 text-muted">Notification</a>
-                <a href="{% url 'bookmarked_posts' %}" class="nav-link px-0 text-muted">Bookmarked Posts</a>
-                
+                <a href="{% url 'bookmarked_posts' %}" class="nav-link px-0 text-muted {% if current_url == 'bookmarked_posts' %}desktop-nav-active{% else %}text-dark{% endif %}">Bookmarked Posts</a>
+
                 <form method="post" action="{% url 'account_logout' %}">
                     {% csrf_token %}
                     <button type="submit" class="nav-link px-0 text-dark bg-transparent border-0">
@@ -48,26 +50,27 @@
 
                 <hr>
 
-                <a href="{% url 'create_post' %}" class="nav-link px-0 text-dark">Create Posts</a>
+                <a href="{% url 'create_post' %}" class="nav-link px-0 text-dark {% if current_url == 'create_post' %}desktop-nav-active{% else %}text-dark{% endif %}">Create Posts</a>
                 <a href="#" class="nav-link px-0 text-muted">Draft Posts</a>
 
                 <hr>
 
-                <a href="{% url 'about_us' %}" class="nav-link px-0 text-dark">About Us</a>
-                <a href="{% url 'about_us' %}" class="nav-link px-0 text-dark">Contact</a>
+                <a href="{% url 'about_us' %}" class="nav-link px-0 text-dark {% if current_url == 'about_us' %}desktop-nav-active{% else %}text-dark{% endif %}">About Us</a>
+                <a href="{% url 'about_us' %}" class="nav-link px-0 text-dark ">Contact</a>
                 <a href="{% url 'about_us' %}" class="nav-link px-0 text-dark">Collaboration</a>
 
             {% else %}
-                <a href="{% url 'account_login' %}" class="nav-link px-0 text-dark">Log in</a>
-                <a href="{% url 'account_signup' %}" class="nav-link px-0 text-dark">Register</a>
+                <a href="{% url 'account_login' %}" class="nav-link px-0 text-dark {% if current_url == 'account_login' %}desktop-nav-active{% else %}text-dark{% endif %}">Log in</a>
+                <a href="{% url 'account_signup' %}" class="nav-link px-0 text-dark {% if current_url == 'account_signup' %}desktop-nav-active{% else %}text-dark{% endif %}">Register</a>
 
                 <hr>
-                <a href="{% url 'about_us' %}" class="nav-link px-0 text-dark">About Us</a>
+                <a href="{% url 'about_us' %}" class="nav-link px-0 text-dark {% if current_url == 'about_us' %}desktop-nav-active{% else %}text-dark{% endif %}">About Us</a>
                 <a href="{% url 'about_us' %}" class="nav-link px-0 text-dark">Contact</a>
                 <a href="{% url 'about_us' %}" class="nav-link px-0 text-dark">Collaboration</a>
             {% endif %}
     </nav>
 </aside>
+{% endwith %}
 
 {% if messages %}
     <div class="position-fixed top-0 start-50 translate-middle-x mt-3 z-3 message-popup">

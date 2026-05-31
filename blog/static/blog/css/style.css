@@ -708,6 +708,10 @@ div.mira-post-image {
     .mira-nav-links {
         gap: 1.25rem;
     }
+
+    .mira-logo{
+        padding-bottom: 0.6rem;
+    }
     
     /* Align filter bar with post grid on tablet */
     .topic-filter-section,
@@ -733,6 +737,12 @@ div.mira-post-image {
         transform: translateX(-50%);
         border-left: 1px solid var(--secondary-color);
         border-right: 1px solid var(--secondary-color);
+    }
+    
+    .desktop-nav-active {
+        color: var(--secondary-color);
+        font-weight: var(--font-weight-bold);
+        font-size: var(--font-size-lg);
     }
 }
 
@@ -760,10 +770,10 @@ div.mira-post-image {
     .desktop-sidebar .nav-link {
         font-size: var(--font-size-base);
         padding-left: 0;
-        margin-top: 1rem;
+        margin-top: 0.5rem;
     }
 
-    /* Top navbar should sit beside sidebar, not underneath it */
+    /* Top navbar should sit beside sidebar, */
     .navbar.fixed-top {
         left: 15rem;
         width: auto;
@@ -778,6 +788,10 @@ div.mira-post-image {
         margin: 0 auto;
         padding-left: 2.5rem;
         padding-right: 2.5rem;
+    }
+
+    .nav-link{
+        padding:5px 0;
     }
 
     .mira-search-form {
@@ -809,7 +823,19 @@ div.mira-post-image {
 
     .topic-filter-section,
     .post-feed-section {
-        max-width: 1140px;
+        max-width: 1200px;
+    }
+    
+    .mira-menu-btn, .bi-list{
+        visibility: hidden;
+    }
+
+    .bottom-mobile-nav {
+    display: none;
+    }
+
+    .post-action-bar {
+        display: none;
     }
 }
 
@@ -817,11 +843,20 @@ div.mira-post-image {
 @media screen and (min-width: 1400px) {
 
     .topic-filter-section,
-    .post-feed-section {
-        max-width: 1320px;
+    .post-feed-section,
+    .mira-navbar  {
+        max-width: 1400px;
     }
 
-    .mira-navbar {
-        max-width: 1320px;
+    .bottom-mobile-nav {
+    display: none;
+    }
+
+    .post-action-bar {
+        display: none;
+    }
+
+    .bi-list{
+    display: none;
     }
 }
