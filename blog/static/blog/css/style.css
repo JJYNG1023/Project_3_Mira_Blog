@@ -1,10 +1,10 @@
 :root {
     /* Colours */
-    --primary-color: #ffeb33;
-    --secondary-color: #212529;
+    --primary-color: #000000;
+    --secondary-color: #000000;
 
-    --icon-color-default: #fd7b41;
-    --icon-color-interactive: #fd7b41;
+    --icon-color-default: #000000;
+    --icon-color-interactive: #000000;
 
     --main-title-color: #000000;
     --sub-title-color: #000000;
@@ -15,8 +15,8 @@
     --annotation-color: #939393;
 
     --background-color: #ffffff;
-    --link-color: #0d6efd;
-    --link-hover-color: #0a58ca;
+    --link-color: #000000;
+    --link-hover-color: #000000;
 
     /* Font sizes */
     --font-size-xs: 0.7rem;
@@ -26,6 +26,8 @@
     --font-size-lg: 1.1rem;
     --font-size-xl: 1.35rem;
     --font-size-xxl: 1.6rem;
+
+    --font-size-detail-title: 1.6rem;
 
     /* Font weights */
     --font-weight-regular: 400;
@@ -37,6 +39,10 @@
     --radius-md: 0.5rem;
     --radius-pill: 999px;
 }
+
+/* -----------------------------
+   Global styles
+------------------------------ */
 
 body {
     padding-top: 80px;
@@ -99,7 +105,7 @@ p {
     height: 44px;
     border: none;
     background: transparent;
-    color: var(--link-color);
+    color: var(--sub-title-color);
     padding: 0;
     font-size: var(--font-size-xl);
     line-height: 1;
@@ -109,13 +115,14 @@ p {
 }
 
 .mira-menu-btn:hover {
-    color: var(--link-hover-color);
+    color: var(--sub-title-color);
 }
 
 .mira-nav-link {
     font-size: 0.95rem;
     white-space: nowrap;
     padding: 0;
+    color: var(--sub-title-color);
 }
 
 .mira-search-form {
@@ -125,6 +132,7 @@ p {
 
 .mira-search-input {
     width: 100%;
+    height: 1.5rem;
     border-radius: 15px;
 }
 
@@ -241,7 +249,7 @@ p {
 
 .mira-post-image {
     width: 100%;
-    height: auto;
+    height: 260px;
     display: block;
     border-radius: var(--radius-md);
 }
@@ -341,7 +349,7 @@ div.mira-post-image {
 }
 
 .post-share-btn:hover {
-    color: var(--link-color);
+    color: var(--main-title-color);
 }
 
 .post-detail-image {
@@ -644,7 +652,7 @@ div.mira-post-image {
 }
 
 .bottom-nav-item:hover {
-    color: var(--link-color);
+    color: var(--main-title-color);
 }
 
 .bottom-create-btn {
@@ -655,16 +663,33 @@ div.mira-post-image {
 
 
 
-/* -----------------------------
-   Mobile to Tablet view
------------------------------- */
+/* =====================================================
+   1. MOBILE / SMALL SCREEN VIEW
+   Extra small: <576px
+   Small: >=576px
+
+   CSS above this point is already mobile-first.
+   No media query is needed for mobile.
+===================================================== */
+
+
+/* =====================================================
+   2. TABLET / MID SCREEN VIEW
+   Medium: >=768px
+===================================================== */
 
 @media screen and (min-width: 768px) {
 
     /* top nav bar & search bar & filter bar*/
     .mira-search-form {
-        max-width: 350px;
+        flex: 0 0 auto;
+        width: 17rem;
+        max-width: 17rem;
         margin-left: auto;
+    }
+
+    .mira-search-input{
+        width:100%;
     }
 
     /*filter tags on mobile view : 'n+6' hide the 6th one*/
@@ -672,23 +697,28 @@ div.mira-post-image {
         display: inline-block;
     }
 
-
-    .topic-filter-section,
-    .post-feed-section {
+    .mira-navbar {
         max-width: 1000px;
         margin: 0 auto;
-    }
-
-    .topic-btn {
-        font-size: var(--font-size-base);
-    }
-
-    .mira-navbar {
+        padding-left: 2rem;
+        padding-right: 3.5rem;
         gap: 1.5rem;
     }
 
     .mira-nav-links {
         gap: 1.25rem;
+    }
+    
+    /* Align filter bar with post grid on tablet */
+    .topic-filter-section,
+    .post-feed-section {
+        max-width: 1000px;
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+    }
+
+    .topic-btn {
+        font-size: var(--font-size-base);
     }
 
     /* blog_post image*/
@@ -707,9 +737,12 @@ div.mira-post-image {
 }
 
 
-/* -----------------------------
-   Desktop view
------------------------------- */
+/* =====================================================
+   3. DESKTOP / LARGE SCREEN VIEW
+   Large: >=992px
+   Extra large: >=1200px
+   Extra extra large: >=1400px
+===================================================== */
 
 @media screen and (min-width: 1024px) {
     .mira-navbar {
@@ -718,7 +751,8 @@ div.mira-post-image {
     }
 
     .mira-search-form {
-        max-width: 420px;
+        width: 20rem;
+        max-width: 20rem;
     }
 
     .bottom-mobile-nav {
@@ -730,11 +764,24 @@ div.mira-post-image {
     }
 }
 
-
+/* Extra large screens: >=1200px */
 @media screen and (min-width: 1200px) {
 
     .topic-filter-section,
     .post-feed-section {
         max-width: 1140px;
+    }
+}
+
+/* Extra extra large screens: >=1400px */
+@media screen and (min-width: 1400px) {
+
+    .topic-filter-section,
+    .post-feed-section {
+        max-width: 1320px;
+    }
+
+    .mira-navbar {
+        max-width: 1320px;
     }
 }
