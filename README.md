@@ -216,13 +216,12 @@ As shown in the [Wireframe_view](https://miro.com/app/board/uXjVHRk-oeo=/?share_
 3. The rest of the webpage focuses on the same typology on same nav bar layout but different body of content.
 
 ---
-
 #### 1.07 Surface Plane_Wireframes
 
 As shown in the [Wireframe_view](https://miro.com/app/board/uXjVHRk-oeo=/?share_link_id=370277439113)
 Wireframes mapped for mobile, tablet, and desktop screen sizes.
 
-#### Mobile Wireframes
+##### Mobile Wireframes
 The mobile wireframes include:
 
 - Landing Page
@@ -300,12 +299,10 @@ HTML features planned include:
   
 ---
 
-# 2.02 Bootstrap Features
+#### 2.02 Bootstrap Features
 
-Bootstrap will be used to support responsive layout and faster front-end development.
-
+Bootstrap is used to support responsive layout and faster front-end development and avoide over populated of css.
 Bootstrap features planned include:
-
 - Responsive grid system
 - Containers and rows
 - Navbar components
@@ -313,39 +310,117 @@ Bootstrap features planned include:
 - Forms
 - Cards
 - Modal or offcanvas menu
-- Utility classes for spacing
 - Responsive breakpoints for mobile, tablet, and desktop
-- Bootstrap icons or Font Awesome icons if needed
+- Bootstrap icons or Font Awesome icons
 
 ---
 
-# 2.03 CSS Features
-
-Custom CSS will be used to style the project beyond Bootstrap defaults.
+#### 2.03 CSS Features
+Custom CSS are used to style the project beyond Bootstrap defaults.
 
 CSS features planned include:
-
-- Custom post card styling
-- Masonry-style grid layout
-- Responsive media queries
-- Custom button styling
+- Custom post, card & button styling
 - Tag filter button styling
 - Sidebar styling for desktop
 - Bottom navigation styling for mobile
 - Profile page layout
 - Blog detail page layout
 - Form styling
-- Hover effects
 - Active states for buttons and filters
 - Image sizing and object-fit styling
 
 ---
 
-3. Technologies used
-4. Testing
-4.01 Testing client stories from UX section of README.md
-4.02 Functionality Test
+### 3. Technologies used
+##### Languages
+- HTML
+- CSS
+- JavaScript
+- Python
+- Django (Python based)
+
+##### Frameworks and Libraries
+- Django
+- Bootstrap
+- Font Awesome
+- Python Packages 
+
+##### Database
+- PostgreSQL provided by code institute for local development
+- Cloudinary for deployed static database
+
+##### Tools
+- GitHub
+- VS Code / GitHub Codespaces
+- Heroku
+- Miro for wireframes
+- Chrome DevTools
+- Tool for testing_W3C HTML Validator 
+- Tool for testing_W3C CSS Validator
+- Tool for testing_Lighthouse
+
+##### Python Packages
+Python Packages are stored in the `requirements.txt`.
+
+---
+
+### 4. Testing
+Testing are carried out throughout the project development against the user story to make sure the website works correctly and provides a good user interface.
+
+##### Testing during development
+Test includes:
+- Manual functionality testing
+- User story testing
+On each cycle of completed user story a manual user testing is committed to minise errors before moving onto the next user story function.
+
+##### Testing after development
+Test includes:
+
+- Manual functionality testing
+- User story testing
+- HTML validation
+- CSS validation
+- Python code validation
+- Responsive testing
+- Browser testing
+- Deployment testing
+
+#### 4.01 Testing Must-Have stories from UX section of README.md
+| User Story | Test | Expected Result | Result |
+|---|---|---|---|
+|As a site visitor, I can view a selection of blog posts on the landing page so that I can discover different types of content when I first enter the website. | Open the landing page | landing page displays multiple Blog post cards | Pass |
+| As a site visitor, I can use the search bar to search for blog posts so that I can quickly find content that matches my interests. | Enter a search term in the search bar, relevant blog posts are displayed and allowing user to select| Relevant posts are displayed | Pass |
+| s a site visitor, I can click on filter tags so that I can view blog posts related to topics I am interested in. | Filter tags are displayed on the top of landing page, click a tag filter button to show relevent posts | Posts with the selected tag are shown | Pass |
+| As a site visitor, I can click on a blog post card to open the full blog page so that I can read the full content and view all related post details. | Click a blog card | Blog detail page opens | Pass |
+| As a site visitor, I can navigate the website easily across different screen sizes so that I can use the platform on mobile, tablet, and desktop devices. | Test on small, mid and large screen view size | Webpage should adapt the different screen size | Pass |
+| As a new user, I can create an account so that I can access personal features such as creating posts, saving posts, and managing my profile. | Creating a new user account | Account is created | Pass |
+| As a signed-in user, I can view my profile | Open profile page | User profile and posts are shown | Pass |
+| As a signed-in user, I can create a blog post and add filter tags to the created posts| Add filter tags to the create post form and submit | New post appears on the website along with filter function | Pass |
+| As a user, I can sign in and sign out when click the sign in / sign out button | Side nav bar displays sign in. Once signed in, a sign out button/text will appear | User can sign in and sign out | Pass |
+| As a site visitor, I can view the About Us page so that I can understand the purpose of Mira and what the platform offers. | The about us should open a seperate html page to display about us information | about us information is visible | Pass |
+| As a signed-in user, I can comment on a blog post so that I can interact with the creator and other users. | Blog detail page includes a comment input field and user can submit a comment when signed in | After user sign in, user can comment on posts | Pass |
+| As a signed-in user, I can edit or delete my own blog posts so that I can manage the content I have published. | Users can edit, delete their own posts. | Edit options allows the user to update the title, content,image and filter tags. While the detele button removes the posts | Pass |
+---
+
+#### 4.02 Functionality Test
+| Feature | Action | Expected Result | Result |
+|---|---|---|---|
+| Navigation links | Click each navigation link | Correct page opens | Pass with condition |
+| Search bar | Search for a keyword | Matching blog posts appear | Pass |
+| Tag filters | Click a tag | Blog feed filters by selected tag | Pass |
+| Blog cards | Click a post card | Blog detail page opens | Pass |
+| Sign up form | Submit valid details | User account is created | Pass |
+| Sign in form | Submit valid details | User logs in successfully | Pass|
+| Create post form | Add title, content, image, and tags | Post is created | Pass |
+| Comment form | Submit a comment | Comment appears under post | Pass |
+| Like button | Click like icon | Post like status updates | Pass |
+| Save button | Click bookmark icon | Post is saved to profile | Pass |
+| Profile tabs | Click Blogs, Saved, Likes | Correct content is displayed | Failed, Revised the css so the profile tab is visable on large screen views |
+| Collaborate form | Submit name, email, and message | Confirmation is shown | Pass |
+
+---
 4.03 Testing with HTML Validator
+
 4.04 Testing with CSS Validator
 5. Deployment
 5.01 How to run this project locally
