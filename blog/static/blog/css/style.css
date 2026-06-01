@@ -744,6 +744,17 @@ div.mira-post-image {
         font-weight: var(--font-weight-bold);
         font-size: var(--font-size-lg);
     }
+
+    /* bottom action bar */
+    .post-bottom-action-bar {
+        width: 100%;
+        max-width: none;
+        left: 0;
+        right: 0;
+        transform: none;
+        border-left: none;
+        border-right: none;
+}
 }
 
 
@@ -805,14 +816,20 @@ div.mira-post-image {
         padding-right: 1rem;
     }
 
+    /* bottom action bar */
+    .post-bottom-action-bar {
+        max-width: 720px;
+        width: 100%;
+        left: calc(20rem + ((100vw - 20rem) / 2));
+        right: auto;
+        transform: translateX(-50%);
+        border-style: none;
+    }
 
     .bottom-mobile-nav {
         display: none;
     }
 
-    .post-action-bar {
-        display: none;
-    }
     .bi-list{
         display: none;
     }

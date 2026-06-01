@@ -60,9 +60,10 @@
                 <a href="{% url 'about_us' %}" class="nav-link px-0 text-dark">Collaboration</a>
 
             {% else %}
+                <a href="{% url 'home' %}" class="nav-link px-0 text-dark {% if current_url == 'home' %}desktop-nav-active{% else %}text-dark{% endif %}">Home</a>
                 <a href="{% url 'account_login' %}" class="nav-link px-0 text-dark {% if current_url == 'account_login' %}desktop-nav-active{% else %}text-dark{% endif %}">Log in</a>
                 <a href="{% url 'account_signup' %}" class="nav-link px-0 text-dark {% if current_url == 'account_signup' %}desktop-nav-active{% else %}text-dark{% endif %}">Register</a>
-
+                
                 <hr>
                 <a href="{% url 'about_us' %}" class="nav-link px-0 text-dark {% if current_url == 'about_us' %}desktop-nav-active{% else %}text-dark{% endif %}">About Us</a>
                 <a href="{% url 'about_us' %}" class="nav-link px-0 text-dark">Contact</a>
