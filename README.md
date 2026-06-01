@@ -421,7 +421,24 @@ Test includes:
 ---
 #### 4.03 Testing with HTML Validator
 [HTML landing page](/validator/html%20validator/landing%20page.png)
+Landing page fix
+1. ``` <form class="mira-search-form" action="{% url 'search_posts' %}" role="search" method="GET">
+                    <input
+                        class="form-control mira-search-input"
+                        type="text"
+                        placeholder="Search"
+                        readonly>
+      </form> ```
 
+2. Removed additional ``` </div> ``` ending
+3. ``` <div class="offcanvas offcanvas-start mira-nav-modal" tabindex="-1" id="miraNavMenu" aria-labelledby="miraNavMenuLabel" role="dialog"> ```
+
+Lists of pages below has minor issues with h2-h6 element, no serouse error issues: 
+[HTML Profile page](/validator/html%20validator/Profile%20page.png)
+[HTML My_blog page](/validator/html%20validator/My_blog%20page.png)
+[HTML Create_blog page](/validator/html%20validator/My_blog%20page.png)
+HTML bookmarked page - minor issues with h2-h6 element,
+HTML post_detail page- No error or issues
 
 4.04 Testing with CSS Validator
 5. Deployment
