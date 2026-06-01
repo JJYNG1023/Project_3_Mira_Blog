@@ -419,7 +419,9 @@ Test includes:
 | Collaborate form | Submit name, email, and message | Confirmation is shown | Pass |
 
 ---
-4.03 Testing with HTML Validator
+#### 4.03 Testing with HTML Validator
+[HTML landing page](/validator/html%20validator/landing%20page.png)
+
 
 4.04 Testing with CSS Validator
 5. Deployment
