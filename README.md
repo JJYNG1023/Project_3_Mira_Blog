@@ -11,9 +11,9 @@ Each post is linked through filter tags, which helps users/visitors to search or
 Mira is designed with a grid-looking visual, masonry-style layout, showing posts in different card heights to create a more dynamic browsing experience across different media. Views can be dynamically adapted to mobile, tablet and desktop, to create a consistent and accessible user experience on all devices.
 
 ---
-
-### 1.02 Strategy Plane_User Goals
-#### What visitors want to achieve ?
+### 1.00 Project formating
+#### 1.01 Strategy Plane_User Goals
+##### What visitors want to achieve ?
 Mira Blog is designed for a range of users who want to discover and create blog content across different topics and interests.
 
 Visitors want to:
@@ -31,9 +31,9 @@ Visitors want to:
 
 The website should presents the content discovery simple, visual, and accessible.
 
-
-### 1.03 Strategy Plane_Client Goals
-#### What does mira want the website to achieve?
+---
+#### 1.02 Strategy Plane_Client Goals
+##### What does mira want the website to achieve?
 The main purpose of Mira is to create an inclusive hybrid social/blog platform.
 The platform is not limited to any specific user or purpose, but a space for everyone to share and blog their own experiences. These experiences are filtered through tags, where individuals have similar mindset can like, follow and create an interaction.
 
@@ -47,23 +47,23 @@ The website should:
 - The website should have a dynamic view across different small, mid and large screens.
 - User should also able to share liked posts to other people.
 
-
-### 1.04 Strategy Plane_Developer and Business Goals
+---
+#### 1.03 Strategy Plane_Developer and Business Goals
 The strategy plane of a develpers aim is to create a full stack Django web application.
 
-##### Developers aim:
+###### Developers aim:
 - Build a Django project using a clear code and app structure.
 - Use relational database to store,post,users,tags,comments,likes and save posts.
 - Allow user to create,read,update & delete posts.
 - Using tags to support the filter and search application.
 - Web should be presentable across different screen size.
 
-##### Business goals:
+###### Business goals:
 - Creating a social blog concept ideology.
 - Encourage user to engage through interactive features, making content post and find related post via search and tag filters.
 - Create platform that shares information, support collaboration, and community.
-
-### 1.05 Scope Plane_User Stories
+---
+#### 1.04 Scope Plane_User Stories
 The user stories has been added into github kanban board and is distrubuted using MoSCoW method to prioritise the important to less important features through Must Have, Could Have and Should Have.
 
 See the [Kanban Board](https://github.com/users/JJYNG1023/projects/5) for lists of project user stories, divided into four sections of:
@@ -73,8 +73,8 @@ See the [Kanban Board](https://github.com/users/JJYNG1023/projects/5) for lists 
 4. Done        - feature has been completed and marked done
 5. Review with user story  - Final testing review against the user story
 
-   
-### 1.06 Skeleton Plane_Design Choices
+---   
+#### 1.05 Skeleton Plane_Design Choices
 The struction of Mira Blog is based on a hybrid blog/social platform, it should be a simple and accessible user journey allowing users to move between discovery, interaction, and creation features.
 
 The skeleton plan would adapt across mobile, tablet and desktop devices to improve usability and accessibility.
@@ -88,7 +88,7 @@ Click this link to see [Link_for_Wireframe_view](https://miro.com/app/board/uXjV
 Click this link to see [ERD](https://miro.com/app/board/uXjVHRHtjY0=/?share_link_id=138730307903)
 
 
-#### Main navigation structure
+##### Main navigation structure
 The main structure planned for Mira contains:
 1. Home/landing page
 2. Search page
@@ -110,8 +110,8 @@ The ideology of the user flow circulation is:
 6. the user can signin or register an account to bookmark, like and comment on the posts.
 7. only a signed in user can create a post and view their own profile.
 
-
-### 1.07 Styling
+---
+#### 1.06 Styling
 The visual style of Mira blog is designe to be minimalistic, clean and modern. The aim is to set out a clear page hierarchy for easy to read.
 To do so, I have set up a default :root variable in CSS styling, this variable helps to refine text styles size, font and colours to make both css styple and webpage more unified and clear. 
 
@@ -158,7 +158,7 @@ To do so, I have set up a default :root variable in CSS styling, this variable h
 
 ```
 
-#### Typography
+##### Typography
 ```  /* Font sizes */
     --font-size-xs: 0.7rem;
     --font-size-sm: 0.8rem;
@@ -178,20 +178,22 @@ The typography should be simple and readable across all devices.
 In the variable style.css, I have set up a fix variable of font weight and font size to differentiate Title, Heading, Subheadings,Body text and Annotation text. 
 Headings should be bold enough to create clear page hierarchy, while body text should remain easy to read.
 
-#### Colour Scheme
+##### Colour Scheme
 The planned colour scheme will use a light and minimal design. Neutral colours will help the blog images and post content stand out.
 
 Possible colour approach:
 - Light background with dark text for readability
 - Highlight colour for active buttons, selected tags, and important actions
-- Grey buttons for annotation like edit and reply.
+- Grey buttons for annotation like edit and reply
+
+At the moment, I have only used black and white for the colour scheme to maintain the readability and minimalistic. However, with the colour variation template I have set up, amending the colours can be easier and more efficent.
 
 ```    /* Colours */
-    --primary-color: #ffeb33;
-    --secondary-color: #212529;
+    --primary-color: #000000;
+    --secondary-color: #000000;
 
-    --icon-color-default: #fd7b41;
-    --icon-color-interactive: #fd7b41;
+    --icon-color-default: #000000;
+    --icon-color-interactive: #000000;
 
     --main-title-color: #000000;
     --sub-title-color: #000000;
@@ -206,11 +208,139 @@ Possible colour approach:
     --link-hover-color: #0a58ca; 
 ```
 
-1.08 Surface Plane_Wireframes
-2. Features
-2.01 HTML features
-2.02 Boostrap features
-2.02 CSS features
+##### Layout Style
+As shown in the [Wireframe_view](https://miro.com/app/board/uXjVHRk-oeo=/?share_link_id=370277439113)
+
+1. The landing page implements bootstraps grid card style layout, present each post with cover imagery, title and short 10word summary. This creates a more visual and interactive browsing experience and avoid overload of information.
+2. The post detail page focuses on singular blog post, set out with bootstrap carousel, title, body of content, filter tags and comment section.
+3. The rest of the webpage focuses on the same typology on same nav bar layout but different body of content.
+
+---
+
+#### 1.07 Surface Plane_Wireframes
+
+As shown in the [Wireframe_view](https://miro.com/app/board/uXjVHRk-oeo=/?share_link_id=370277439113)
+Wireframes mapped for mobile, tablet, and desktop screen sizes.
+
+#### Mobile Wireframes
+The mobile wireframes include:
+
+- Landing Page
+- Search Page
+- Navigation Modal
+- Notification Page (Notfication page is not been created, due to low priority)
+- Create Post Page
+- Blog Detail Page
+- Expanded Blog Page with Comments
+- My Profile Page
+- Sign In & Sign Up Page
+- About Us & Collaborate Page
+
+The mobile view focuses on compact layout with top and bottom navigation to allow easier access to key actions.
+
+##### Tablet Wireframes
+
+The tablet wireframes include the same main pages as the mobile version allows three columns for displaying blog cards at landing page.
+
+##### Desktop Wireframes
+The desktop wireframes include a fixed left sidebar navigation panel. The main content area is wider which should be same as the tablet wireframe view.
+The desktop layout improves navigation by keeping the sidebar visible while users browse the site.
+
+---
+
+### 2.00 Features
+Current / Planned Features and relations are mapped out in [ERD](https://miro.com/app/board/uXjVHRHtjY0=/?share_link_id=138730307903)
+
+##### Responsive Landing Page
+The landing page displays a variaty of blog post cards in a visual grid layout. Each post card includes an image, title, and content preview.
+
+##### Search Functionality
+Users can search for blog posts using keywords to find content based on their interests.
+
+##### Tag Filtering
+Posts can include tags such as travel, food, hiking, nature, city explore, and landscape. Clicking a tag filter in the landing page filters the contents to that topic.
+
+##### Blog Detail Page
+Users can open a full blog post to read the content and view the post image, title, creator, date, and interactions.
+
+##### User Authentication
+Users can sign up and sign in to access account-based features like; bookmarked posts, notifications,users own blog posts and profile page.
+
+##### Create Post
+Signed-in users can create blog posts using a form with title, content, image, and tags.
+
+##### Profile Page
+Users can view their profile, posts, bookmarked posts, followers & following number count.
+
+##### Likes & Comment
+Authenticated sign in users can like and comment posts.
+
+##### Bookmark Post
+Signed-in users can bookmark posts.
+
+##### Notifications
+Users can view notifications related to post interactions.
+(This function has not been developed as Notification falls in could have catagory. Due to time constraints it is not been added.)
+
+##### About Us & Collaboration
+The About Us page explains the purpose of Mira and includes a collaboration/contact section.
+
+---
+
+#### 2.01 HTML Features
+HTML features planned include:
+- Header navigation
+- Main content sections
+- Blog post cards (modified from boostrap)
+- Forms for sign in & sign up (modified from Auth), create post, and collaboration
+- Buttons for interactions
+- Links for navigation
+- Image elements with alt attributes
+- Footer or bottom navigation for small to mid size screen views
+  
+---
+
+# 2.02 Bootstrap Features
+
+Bootstrap will be used to support responsive layout and faster front-end development.
+
+Bootstrap features planned include:
+
+- Responsive grid system
+- Containers and rows
+- Navbar components
+- Buttons
+- Forms
+- Cards
+- Modal or offcanvas menu
+- Utility classes for spacing
+- Responsive breakpoints for mobile, tablet, and desktop
+- Bootstrap icons or Font Awesome icons if needed
+
+---
+
+# 2.03 CSS Features
+
+Custom CSS will be used to style the project beyond Bootstrap defaults.
+
+CSS features planned include:
+
+- Custom post card styling
+- Masonry-style grid layout
+- Responsive media queries
+- Custom button styling
+- Tag filter button styling
+- Sidebar styling for desktop
+- Bottom navigation styling for mobile
+- Profile page layout
+- Blog detail page layout
+- Form styling
+- Hover effects
+- Active states for buttons and filters
+- Image sizing and object-fit styling
+
+---
+
 3. Technologies used
 4. Testing
 4.01 Testing client stories from UX section of README.md
