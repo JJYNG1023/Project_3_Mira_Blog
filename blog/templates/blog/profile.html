@@ -101,7 +101,7 @@
   <!-- Post grid using your existing card styles -->
   <div class="row g-3 pb-5">
     {% for post in posts %}
-      <div class="col-6">
+      <div class="col-6 col-lg-4">
         <a href="{% url 'post_detail' post.slug %}" class="mira-post-card">
 
           {% if post.featured_image %}
