@@ -440,15 +440,70 @@ Lists of pages below has minor issues with h2-h6 element, no serouse error issue
 HTML bookmarked page - minor issues with h2-h6 element,
 HTML post_detail page- No error or issues
 
-4.04 Testing with CSS Validator
-5. Deployment
-5.01 How to run this project locally
+#### 4.04 Testing with CSS Validator
+
+#### 4.05 Testing with Light House
 
 
-### WireFrame View
-[Link_for_Wireframe_view](https://miro.com/app/board/uXjVHRk-oeo=/?share_link_id=370277439113)
+### 5. Deployment
+The project will be saved on github and deployed using Heroku.
 
-### ERD
-[Link_for_ERD](https://miro.com/app/board/uXjVHRHtjY0=/?share_link_id=138730307903)
+#### 5.01 Deployment Progress Completed
+The following are the steps taken to deploy the current project:
+1. Created the GitHub repository named `Project_3_Mira_Blog`
+2. Set up the Python development environment
+3. Added a `.gitignore` file
+4. Added SQL database configuration
+5. Added Cloudinary database configuration
+6. Updated `env.py` and `settings.py`
+7. Installed required plugins using `requirements.txt`
+8. Created the main Django app called `mira_blog`
+9. Linked the GitHub repository to Heroku
+10. Added the secret key and SQL database key to Heroku Config Vars
+11. Make migration on changes in models.py and creation of new apps.
+12. Temporarily added `DISABLE_COLLECTSTATIC=1` on Heroku
+13. Committed all changes to GitHub
+14. Remove the `DISABLE_COLLECTSTATIC=1` on Heroku
+15. Re-deploy project on Heroku
+
+#### 5.02 How to run this project locally
+To clone this project from GitHub
+
+1. Click the attached link to the Project GitHub Repository
+2. Under the repository name, click "Clone or Download"
+3. In the Clone with HTTPs section, copy the clone URL for the respository.
+4. In your local IDE open Git Bash.
+5. Change the current working directory to the location where you want the cloned directory to be made.
+6. Type "git clone", and then paste the URL you copied in step 3.
+Git Clone: https://github.com/JJYNG1023/Project_3_Mira_Blog.git
+Press Enter. Your local clone will be created.
 
 
+### 6. Credit
+
+#### 6.01 Content
+
+The text, image, links and other data in the database was sourced from various local websites including but not limited to:
+
+TripAdviser 
+
+
+#### 6.02 Media
+
+
+
+#### 6.03 Code
+
+Credit: bootstrap template code for : 
+- Carousel
+- 
+
+Credit: Code institute lession on Django framework:
+-
+-
+
+Credit: CHATGPT on bug fixing:
+
+Credit: Visual Studio Code's built-in AI features are powered by GitHub Copilot
+
+#### 6.04 Acknowledgements
