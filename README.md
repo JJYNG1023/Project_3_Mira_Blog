@@ -441,6 +441,13 @@ HTML bookmarked page - minor issues with h2-h6 element,
 HTML post_detail page- No error or issues
 
 #### 4.04 Testing with CSS Validator
+[CSS Validator](/validator/css%20validator/css.png)
+The css only has one error with:
+```.carousel-control-prev,
+.carousel-control-next {
+    filter: 1;
+} ```
+This was added before to make the boostrap carousel more stand out from the background, however it is not needed now and code will be deleted to remove error.
 
 #### 4.05 Testing with Light House
 

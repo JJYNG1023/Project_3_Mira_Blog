@@ -371,11 +371,6 @@ div.mira-post-image {
     opacity: 1;
 }
 
-.carousel-control-prev,
-.carousel-control-next {
-    filter: 1;
-}
-
 .post-detail-title {
     font-size: var(--font-size-detail-title);
     margin: 0.75rem 0 0.5rem;
