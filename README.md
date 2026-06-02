@@ -11,7 +11,7 @@ Each post is linked through filter tags, which helps users/visitors to search or
 Mira is designed with a grid-looking visual, masonry-style layout, showing posts in different card heights to create a more dynamic browsing experience across different media. Views can be dynamically adapted to mobile, tablet and desktop, to create a consistent and accessible user experience on all devices.
 
 ---
-### 1.00 Project formating
+### 1.00 Project formatting
 #### 1.01 Strategy Plane_User Goals
 ##### What visitors want to achieve ?
 Mira Blog is designed for a range of users who want to discover and create blog content across different topics and interests.
@@ -31,7 +31,6 @@ Visitors want to:
 
 The website should presents the content discovery simple, visual, and accessible.
 
----
 #### 1.02 Strategy Plane_Client Goals
 ##### What does mira want the website to achieve?
 The main purpose of Mira is to create an inclusive hybrid social/blog platform.
@@ -47,9 +46,8 @@ The website should:
 - The website should have a dynamic view across different small, mid and large screens.
 - User should also able to share liked posts to other people.
 
----
 #### 1.03 Strategy Plane_Developer and Business Goals
-The strategy plane of a develpers aim is to create a full stack Django web application.
+The strategy plane of a developers aim is to create a full stack Django web application.
 
 ###### Developers aim:
 - Build a Django project using a clear code and app structure.
@@ -62,7 +60,7 @@ The strategy plane of a develpers aim is to create a full stack Django web appli
 - Creating a social blog concept ideology.
 - Encourage user to engage through interactive features, making content post and find related post via search and tag filters.
 - Create platform that shares information, support collaboration, and community.
----
+
 #### 1.04 Scope Plane_User Stories
 The user stories has been added into github kanban board and is distrubuted using MoSCoW method to prioritise the important to less important features through Must Have, Could Have and Should Have.
 
@@ -73,9 +71,8 @@ See the [Kanban Board](https://github.com/users/JJYNG1023/projects/5) for lists 
 4. Done        - feature has been completed and marked done
 5. Review with user story  - Final testing review against the user story
 
----   
 #### 1.05 Skeleton Plane_Design Choices
-The struction of Mira Blog is based on a hybrid blog/social platform, it should be a simple and accessible user journey allowing users to move between discovery, interaction, and creation features.
+The structure of Mira Blog is based on a hybrid blog/social platform, it should be a simple and accessible user journey allowing users to move between discovery, interaction, and creation features.
 
 The skeleton plan would adapt across mobile, tablet and desktop devices to improve usability and accessibility.
 On mobile view, the wireframe uses top and bottom navigation bar to support thumb navigation, allowing quick access to home, notification, user profile and create post.
@@ -103,14 +100,13 @@ The main structure planned for Mira contains:
 
 The ideology of the user flow circulation is: 
 1. The user lands on the home page.
-2. the user browses the Expore and recent blog posts.
-3. the user searches for the topics their are interesed using search bar or filter tags.
+2. the user browses the Explore and recent blog posts.
+3. the user searches for the topics they are interesed in using search bar or filter tags.
 4. the user click on a blog post to view the full post.
 5. the user can share the post.
-6. the user can signin or register an account to bookmark, like and comment on the posts.
+6. the user can sign in or register an account to bookmark, like and comment on the posts.
 7. only a signed in user can create a post and view their own profile.
 
----
 #### 1.06 Styling
 The visual style of Mira blog is designe to be minimalistic, clean and modern. The aim is to set out a clear page hierarchy for easy to read.
 To do so, I have set up a default :root variable in CSS styling, this variable helps to refine text styles size, font and colours to make both css styple and webpage more unified and clear. 
@@ -215,7 +211,6 @@ As shown in the [Wireframe_view](https://miro.com/app/board/uXjVHRk-oeo=/?share_
 2. The post detail page focuses on singular blog post, set out with bootstrap carousel, title, body of content, filter tags and comment section.
 3. The rest of the webpage focuses on the same typology on same nav bar layout but different body of content.
 
----
 #### 1.07 Surface Plane_Wireframes
 
 As shown in the [Wireframe_view](https://miro.com/app/board/uXjVHRk-oeo=/?share_link_id=370277439113)
@@ -227,7 +222,7 @@ The mobile wireframes include:
 - Landing Page
 - Search Page
 - Navigation Modal
-- Notification Page (Notfication page is not been created, due to low priority)
+- Notification Page (Notification page is not been created, due to low priority)
 - Create Post Page
 - Blog Detail Page
 - Expanded Blog Page with Comments
@@ -251,7 +246,7 @@ The desktop layout improves navigation by keeping the sidebar visible while user
 Current / Planned Features and relations are mapped out in [ERD](https://miro.com/app/board/uXjVHRHtjY0=/?share_link_id=138730307903)
 
 ##### Responsive Landing Page
-The landing page displays a variaty of blog post cards in a visual grid layout. Each post card includes an image, title, and content preview.
+The landing page displays a variety of blog post cards in a visual grid layout. Each post card includes an image, title, and content preview.
 
 ##### Search Functionality
 Users can search for blog posts using keywords to find content based on their interests.
@@ -279,14 +274,26 @@ Signed-in users can bookmark posts.
 
 ##### Notifications
 Users can view notifications related to post interactions.
-(This function has not been developed as Notification falls in could have catagory. Due to time constraints it is not been added.)
+(This function has not been developed as Notification falls in could have category. Due to time constraints it is not been added.)
 
 ##### About Us & Collaboration
 The About Us page explains the purpose of Mira and includes a collaboration/contact section.
 
----
+#### 2.01 Database Schema
+The application uses a relational database structure built with Django models.
+[ERD](https://miro.com/app/board/uXjVHRHtjY0=/?share_link_id=138730307903)
+The main entities are:
+| Model | Purpose |
+|---|---|
+| User | Django authentication user model |
+| UserProfile | Stores profile image and following/follower relationships |
+| Post | Stores blog post title, slug, content, author, featured image and publication status |
+| Tag | Stores topic/filter tags connected to posts |
+| PostImage | Stores multiple uploaded images for each post |
+| Comment | Stores comments and replies through a self-referencing parent field |
+| CollaborationMessage | Stores messages submitted through the About/Collaboration form |
 
-#### 2.01 HTML Features
+#### 2.02 HTML Features
 HTML features planned include:
 - Header navigation
 - Main content sections
@@ -296,12 +303,10 @@ HTML features planned include:
 - Links for navigation
 - Image elements with alt attributes
 - Footer or bottom navigation for small to mid size screen views
-  
----
 
-#### 2.02 Bootstrap Features
+#### 2.03 Bootstrap Features
 
-Bootstrap is used to support responsive layout and faster front-end development and avoide over populated of css.
+Bootstrap is used to support responsive layout and faster front-end development and avoid over populated of css.
 Bootstrap features planned include:
 - Responsive grid system
 - Containers and rows
@@ -313,9 +318,7 @@ Bootstrap features planned include:
 - Responsive breakpoints for mobile, tablet, and desktop
 - Bootstrap icons or Font Awesome icons
 
----
-
-#### 2.03 CSS Features
+#### 2.04 CSS Features
 Custom CSS are used to style the project beyond Bootstrap defaults.
 
 CSS features planned include:
@@ -331,7 +334,7 @@ CSS features planned include:
 
 ---
 
-### 3. Technologies used
+### 3.00 Technologies used
 ##### Languages
 - HTML
 - CSS
@@ -364,7 +367,7 @@ Python Packages are stored in the `requirements.txt`.
 
 ---
 
-### 4. Testing
+### 4.00 Testing
 Testing are carried out throughout the project development against the user story to make sure the website works correctly and provides a good user interface.
 
 ##### Testing during development
@@ -399,13 +402,12 @@ Test includes:
 | As a user, I can sign in and sign out when click the sign in / sign out button | Side nav bar displays sign in. Once signed in, a sign out button/text will appear | User can sign in and sign out | Pass |
 | As a site visitor, I can view the About Us page so that I can understand the purpose of Mira and what the platform offers. | The about us should open a seperate html page to display about us information | about us information is visible | Pass |
 | As a signed-in user, I can comment on a blog post so that I can interact with the creator and other users. | Blog detail page includes a comment input field and user can submit a comment when signed in | After user sign in, user can comment on posts | Pass |
-| As a signed-in user, I can edit or delete my own blog posts so that I can manage the content I have published. | Users can edit, delete their own posts. | Edit options allows the user to update the title, content,image and filter tags. While the detele button removes the posts | Pass |
----
+| As a signed-in user, I can edit or delete my own blog posts so that I can manage the content I have published. | Users can edit, delete their own posts. | Edit options allows the user to update the title, content,image and filter tags. While the delete button removes the posts | Pass |
 
 #### 4.02 Functionality Test
 | Feature | Action | Expected Result | Result |
 |---|---|---|---|
-| Navigation links | Click each navigation link | Correct page opens | Pass with condition |
+| Navigation links | Click each navigation link | Correct page opens | Pass |
 | Search bar | Search for a keyword | Matching blog posts appear | Pass |
 | Tag filters | Click a tag | Blog feed filters by selected tag | Pass |
 | Blog cards | Click a post card | Blog detail page opens | Pass |
@@ -418,7 +420,6 @@ Test includes:
 | Profile tabs | Click Blogs, Saved, Likes | Correct content is displayed | Failed, Revised the css so the profile tab is visable on large screen views |
 | Collaborate form | Submit name, email, and message | Confirmation is shown | Pass |
 
----
 #### 4.03 Testing with HTML Validator
 [HTML landing page](/validator/html%20validator/landing%20page.png)
 Landing page fix
@@ -433,7 +434,7 @@ Landing page fix
 2. Removed additional ``` </div> ``` ending
 3. ``` <div class="offcanvas offcanvas-start mira-nav-modal" tabindex="-1" id="miraNavMenu" aria-labelledby="miraNavMenuLabel" role="dialog"> ```
 
-Lists of pages below has minor issues with h2-h6 element, no serouse error issues: 
+Lists of pages below has minor issues with h2-h6 element, no serious error issues: 
 [HTML Profile page](/validator/html%20validator/Profile%20page.png)
 [HTML My_blog page](/validator/html%20validator/My_blog%20page.png)
 [HTML Create_blog page](/validator/html%20validator/My_blog%20page.png)
@@ -443,16 +444,33 @@ HTML post_detail page- No error or issues
 #### 4.04 Testing with CSS Validator
 [CSS Validator](/validator/css%20validator/css.png)
 The css only has one error with:
-```.carousel-control-prev,
-.carousel-control-next {
-    filter: 1;
-} ```
-This was added before to make the boostrap carousel more stand out from the background, however it is not needed now and code will be deleted to remove error.
+```.carousel-control-prev,```
+```.carousel-control-next {```
+``` filter: 1;} ```
+This was added before to make the Boostrap carousel more stand out from the background, however it is not needed now and code will be deleted to remove error.
 
 #### 4.05 Testing with Light House
+| Page | Performance | Accessibility | Best Practice |
+|---|---|---|---|
+|Landing page|85|100|100|
+|Profile page|94|100|100|
+|My_blog page|96|100|100|
+|Bookmarked page|100|100|100|
+|Create_post page|100|100|100|
+|About_us page|100|100|100|
+|post_detail page|96|92|100|
 
+[Light House-landing page](/light_house/landing_page_light_house_report.pdf)- minor requirement to improve image delivery and font display
+[Light House-profile page](/light_house/profile_page_light_house_report.pdf)
+[Light House-my_blog page](/light_house/my_blog_page_light_house_report.pdf)
+[Light House-bookmarked page](/light_house/bookmarked_page_light_house_report.pdf)
+[Light House-create_post page](/light_house/create_post_page_light_house_report.pdf)
+[Light House-about_us page](/light_house/about_us_page_light_house_report.pdf)
+[Light House-post_detail page](/light_house/post_detail_page_light_house_report.pdf)
 
-### 5. Deployment
+--- 
+
+### 5.00 Deployment
 The project will be saved on github and deployed using Heroku.
 
 #### 5.01 Deployment Progress Completed
@@ -485,32 +503,59 @@ To clone this project from GitHub
 Git Clone: https://github.com/JJYNG1023/Project_3_Mira_Blog.git
 Press Enter. Your local clone will be created.
 
+---
 
-### 6. Credit
+### 6.00 Security
+- `SECRET_KEY`, `DATABASE_URL` and `CLOUDINARY_URL` are stored in environment variables and Heroku Config Vars
+- `env.py`, `.env`, `db.sqlite3` and local environment folders are included in `.gitignore`
+- `DEBUG` is set through an environment variable and is disabled in production
+- Create, edit, delete, profile image upload, comment, bookmark, like and follow actions require authentication
+- Post editing and deletion are restricted to the post author
 
-#### 6.01 Content
+### 7.00 Credit
 
+#### 7.01 Content
 The text, image, links and other data in the database was sourced from various local websites including but not limited to:
 
-TripAdviser 
+TripAdviser.co.uk
+Reddit.co.uk
+Alltrails.co.uk
+Visitleeds.co.uk
+Confidentialguides.com
+Google Maps  for general place/location reference
+Official venue and attraction websites where relevant
 
+#### 7.02 Media
+Images were sourced from publicly available online resources and used to demonstrate blog post image upload.
 
-#### 6.02 Media
+Jameson Distillery Bow St. 
+https://www.tripadvisor.co.uk/Attraction_Review-g186605-d216616-Reviews-Jameson_Distillery_Bow_St-Dublin_County_Dublin.html
 
+Ex Directory
+https://confidentialguides.com/food-drink/bars/ex-directory-liverpool-bar/
 
+Royal Armouries Museum
+https://www.tripadvisor.co.uk/Attraction_Review-g186411-d189274-Reviews-Royal_Armouries_Museum-Leeds_West_Yorkshire_England.html
 
-#### 6.03 Code
+Fairy Glen
+https://www.tripadvisor.co.uk/Attraction_Review-g7228398-d8305146-Reviews-Fairy_Glen-Appley_Bridge_Wigan_Greater_Manchester_England.html
 
-Credit: bootstrap template code for : 
-- Carousel
-- 
+Image-related tools and services involved:
+- Cloudinary: for storing uploaded media files in the deployed project
+- Bootstrap Carousel: display multiple uploaded post images.
 
-Credit: Code institute lession on Django framework:
--
--
+#### 7.03 Code
+This project was built using custom HTML, CSS, JavaScript, Python and Django code, with support from the following documentation:
+- Django Documentation: Django project structure, models, views, templates, forms and authentication guidance.
+- Django Allauth Documentation: user authentication, registration, login and logout functionality.
+- Bootstrap Documentation: responsive grid layout, navigation, buttons, forms, offcanvas menu and carousel components.
+- Bootstrap Icons: icons across navigation, profile, post actions and interactive buttons.
+- Cloudinary Documentation: image/media storage in the deployed project.
+- WhiteNoise Documentation: configure and serve static files on Heroku.
+- Heroku Documentation: deployment guidance and environment variable configuration.
+- Code Institute learning materials: general guidance for Django project structure, deployment and full-stack development workflow.
+- CHATGPT: support debugging, code explanation, README structure, deployment troubleshooting and testing documentation.
+- Visual Studio Code's: built-in AI features are powered by GitHub Copilot to support code suggestions during development on project
 
-Credit: CHATGPT on bug fixing:
-
-Credit: Visual Studio Code's built-in AI features are powered by GitHub Copilot
-
-#### 6.04 Acknowledgements
+#### 7.04 Acknowledgements
+Thank you to the Code Institute tutors for guidance throughout the project development process.
