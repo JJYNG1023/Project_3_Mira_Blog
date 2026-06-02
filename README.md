@@ -64,7 +64,7 @@ The strategy plane of a developers aim is to create a full stack Django web appl
 #### 1.04 Scope Plane_User Stories
 The user stories has been added into github kanban board and is distrubuted using MoSCoW method to prioritise the important to less important features through Must Have, Could Have and Should Have.
 
-See the [Kanban Board](https://github.com/users/JJYNG1023/projects/5) for lists of project user stories, divided into four sections of:
+See the [Kanban Board](https://github.com/users/JJYNG1023/projects/5/views/2) for lists of project user stories, divided into four sections of:
 1. To do list  - lists of tasks marked in MoSCoW method
 2. In progress - features currently working on
 3. In review   - review how function perform in particular section
