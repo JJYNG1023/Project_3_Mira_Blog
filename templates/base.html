@@ -40,7 +40,7 @@
                 <a href="{% url 'user_profile' %}" class="nav-link px-0 text-muted {% if current_url == 'user_profile' %}desktop-nav-active{% else %}text-dark{% endif %}">My Profile</a>
                 <a href="{% url 'my_blog' %}" class="nav-link px-0 text-muted {% if current_url == 'my_blog' %}desktop-nav-active{% else %}text-dark{% endif %}">My Blog</a>
                 <a href="{% url 'bookmarked_posts' %}" class="nav-link px-0 text-muted {% if current_url == 'bookmarked_posts' %}desktop-nav-active{% else %}text-dark{% endif %}">Bookmarked Posts</a>
-                <a href="#" class="nav-link px-0 text-muted">Notification</a>
+                <!--<a href="#" class="nav-link px-0 text-muted">Notification</a>-->
                 <form method="post" action="{% url 'account_logout' %}">
                     {% csrf_token %}
                     <button type="submit" class="nav-link px-0 text-dark bg-transparent border-0">
